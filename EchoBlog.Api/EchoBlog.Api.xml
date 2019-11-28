@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EchoBlog.Api</name>
+    </assembly>
+    <members>
+        <member name="T:EchoBlog.Api.Controllers.JwtController">
+            <summary>
+            Jwt 颁发控制器
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Controllers.JwtController.Post">
+            <summary>
+            获取 Jwt Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EchoBlog.Api.Extension.AutoMapperEx">
+            <summary>
+            AutoMapper 扩展类
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Extension.AutoMapperEx.AddAutoMapperConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置 AutoMapper
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:EchoBlog.Api.Extension.JwtEx">
+            <summary>
+            JWT 认证以及授权扩展类
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Extension.JwtEx.AddJwtConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置 Jwt
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:EchoBlog.Api.Extension.SwaggerEx">
+            <summary>
+            Swagger 扩展类
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Extension.SwaggerEx.AddSwaggerConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置 Swagger
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="P:EchoBlog.Api.Startup.ApiName">
+            <summary>
+            Api 名称
+            </summary>
+        </member>
+        <member name="T:EchoBlog.Api.Util.Auth.PermissionHandler">
+            <summary>
+            自定义授权策略处理类
+            </summary>
+        </member>
+        <member name="T:EchoBlog.Api.Util.AutoMapper.AutoMapperConfig">
+            <summary>
+            AutoMapper 配置帮助类
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Util.AutoMapper.AutoMapperConfig.GetAutoMapperConfiguration">
+            <summary>
+            获取 AutoMapper 配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EchoBlog.Api.Util.AutoMapper.AutoMapperProfile">
+            <summary>
+            AutoMapper 配置文件类
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Util.AutoMapper.AutoMapperProfile.#ctor">
+            <summary>
+            构造方法，创建映射关系
+            </summary>
+        </member>
+    </members>
+</doc>
