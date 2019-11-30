@@ -55,13 +55,13 @@ namespace EchoBlog.Model
         public bool IsDeleted { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// 创建时间，默认当前时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public string CreateTime { get; set; } = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
         /// <summary>
-        /// 修改时间
+        /// 修改时间，默认当前时间
         /// </summary>
-        public DateTime UpdateTime { get; set; }
+        public string UpdateTime { get; set; } = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
     }
 }

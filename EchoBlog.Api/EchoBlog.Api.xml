@@ -58,23 +58,17 @@
             自定义授权策略处理类
             </summary>
         </member>
-        <member name="T:EchoBlog.Api.Util.AutoMapper.AutoMapperConfig">
+        <member name="T:EchoBlog.Api.Util.AutoMapper.CustomConverter.DateTimeConverter">
             <summary>
-            AutoMapper 配置帮助类
+            AutoMapper 自定义时间的映射规则：从 DateTime 转为对应的字符串
             </summary>
         </member>
-        <member name="M:EchoBlog.Api.Util.AutoMapper.AutoMapperConfig.GetAutoMapperConfiguration">
+        <member name="T:EchoBlog.Api.Util.AutoMapper.CustomProfile.ArticleProfile">
             <summary>
-            获取 AutoMapper 配置
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:EchoBlog.Api.Util.AutoMapper.AutoMapperProfile">
-            <summary>
-            AutoMapper 配置文件类
+            文章的 AutoMapper 配置文件类
             </summary>
         </member>
-        <member name="M:EchoBlog.Api.Util.AutoMapper.AutoMapperProfile.#ctor">
+        <member name="M:EchoBlog.Api.Util.AutoMapper.CustomProfile.ArticleProfile.#ctor">
             <summary>
             构造方法，创建映射关系
             </summary>
