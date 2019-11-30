@@ -33,7 +33,7 @@ namespace EchoBlog.Api.Extension
             {
                 // 获取所有继承 Profile 的子类
                 var types = Assembly.Load(assembly).GetTypes()
-                    .Where(t => t.BaseType != null && t.BaseType.Name.Equals("Profile"));
+                    .Where(t => t.BaseType != null && t.BaseType.FullName.Equals("AutoMapper.Profile"));
 
                 if (types.Any())
                     profiles.AddRange(types);

@@ -16,8 +16,14 @@ namespace EchoBlog.Service.Impl
     /// </summary>
     public class ArticleService : IArticleService
     {
+        /// <summary>
+        /// 文章数据服务对象
+        /// </summary>
         private readonly IArticleRepository articleReposity;
 
+        /// <summary>
+        /// AutoMapper 映射对象
+        /// </summary>
         private readonly IMapper mapper;
 
         public ArticleService(IArticleRepository articleReposity, IMapper mapper)
@@ -26,11 +32,15 @@ namespace EchoBlog.Service.Impl
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// 获取所有的文章
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<ArticleModel>> GetAllArticles()
         {
             var articles = await articleReposity.GetAllArticles();
 
-            var articleModels = mapper.Map<List<ArticleEntity>, List<ArticleModel>>(articles.ToList());
+            var articleModels = mapper.Map<IEnumerable<ArticleEntity>, IEnumerable<ArticleModel>>(articles.ToList());
 
             return articleModels;
         }
