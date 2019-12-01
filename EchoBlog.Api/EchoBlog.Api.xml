@@ -4,6 +4,11 @@
         <name>EchoBlog.Api</name>
     </assembly>
     <members>
+        <member name="T:EchoBlog.Api.Attribute.LogAttribute">
+            <summary>
+            记录日志
+            </summary>
+        </member>
         <member name="T:EchoBlog.Api.Controllers.JwtController">
             <summary>
             Jwt 颁发控制器

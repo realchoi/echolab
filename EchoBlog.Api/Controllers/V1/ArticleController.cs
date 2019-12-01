@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EchoBlog.Api.Attribute;
 using EchoBlog.Model;
 using EchoBlog.Service.Def;
 using Microsoft.AspNetCore.Authorization;
@@ -34,6 +35,7 @@ namespace EchoBlog.Api.Controllers.V1
         // 使用自定义授权策略
         // [Authorize(Policy = "RequirementPolicy")]
         [HttpGet]
+        //[Log]
         public async Task<IEnumerable<ArticleModel>> Get()
         {
             try

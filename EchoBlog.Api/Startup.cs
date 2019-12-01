@@ -4,7 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AspectCore.Configuration;
+using AspectCore.Extensions.DependencyInjection;
+using AspectCore.Injector;
 using AutoMapper;
+using EchoBlog.Api.Attribute;
 using EchoBlog.Api.Extension;
 using EchoBlog.Api.Util.Auth;
 using EchoBlog.Api.Util.AutoMapper;
@@ -50,6 +54,7 @@ namespace EchoBlog.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             #region 注入用到的类
 
             services.AddSingleton(new AppSetting(Env.ContentRootPath));
@@ -66,6 +71,12 @@ namespace EchoBlog.Api
             services.AddAutoMapperConfiguration();
 
             services.AddControllers();
+
+            // 注入属性拦截器
+            services.ConfigureDynamicProxy(cfg =>
+            {
+                cfg.Interceptors.AddTyped<LogAttribute>(Predicates.ForService("*Service"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
