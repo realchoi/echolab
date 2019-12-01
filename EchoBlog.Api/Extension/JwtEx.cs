@@ -27,7 +27,7 @@ namespace EchoBlog.Api.Extension
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
 
-            var privateKey = AppSetting.Get(new string[] { "JwtSetting", "PrivateKey" });
+            var privateKey = AppSetting.Get("JwtSetting", "PrivateKey");
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(privateKey));
 
             #region 添加 jwt 认证服务
