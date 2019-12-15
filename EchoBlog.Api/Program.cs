@@ -22,7 +22,7 @@ namespace EchoBlog.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-            .UseServiceProviderFactory(new AspectCoreServiceProviderFactory()); // Aspect.Core
+                });
+        //.UseServiceProviderFactory(new AspectCoreServiceProviderFactory()); // Aspect.Core
     }
 }

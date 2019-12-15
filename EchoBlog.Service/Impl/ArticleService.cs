@@ -40,7 +40,7 @@ namespace EchoBlog.Service.Impl
         {
             var articles = await articleReposity.GetAllArticles();
 
-            var articleModels = mapper.Map<IEnumerable<ArticleEntity>, IEnumerable<ArticleModel>>(articles.ToList());
+            var articleModels = mapper.Map<IEnumerable<ArticleEntity>, IEnumerable<ArticleModel>>(articles);
 
             return articleModels;
         }

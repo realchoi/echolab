@@ -1,34 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AspectCore.Configuration;
 using AspectCore.Extensions.DependencyInjection;
-using AspectCore.Injector;
-using AutoMapper;
 using EchoBlog.Api.Attribute;
 using EchoBlog.Api.Extension;
-using EchoBlog.Api.Util.Auth;
-using EchoBlog.Api.Util.AutoMapper;
 using EchoBlog.Repository.DbConfig;
 using EchoBlog.Repository.Def;
 using EchoBlog.Repository.Impl;
 using EchoBlog.Service.Def;
 using EchoBlog.Service.Impl;
 using EchoBlog.Util.AppConfig;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Filters;
 
 namespace EchoBlog.Api
 {
