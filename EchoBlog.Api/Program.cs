@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace EchoBlog.Api
 {
@@ -22,7 +23,13 @@ namespace EchoBlog.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
-        //.UseServiceProviderFactory(new AspectCoreServiceProviderFactory()); // Aspect.Core
+                })
+                .UseServiceProviderFactory(new ServiceContextProviderFactory()) // Aspect.Core
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Trace);
+                })
+                .UseNLog(); // NLog »’÷æ
     }
 }

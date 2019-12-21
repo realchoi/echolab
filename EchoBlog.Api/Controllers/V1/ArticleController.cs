@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EchoBlog.Api.Attribute;
 using EchoBlog.Model;
 using EchoBlog.Service.Def;
+using EchoBlog.Util.LogUtil;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,10 +42,12 @@ namespace EchoBlog.Api.Controllers.V1
             try
             {
                 var articles = await articleService.GetAllArticles();
-                return articles;
+                throw new Exception("测试异常消息");
+                //return articles;
             }
             catch (Exception ex)
             {
+                NLogUtil.Error(ex, $"获取全部文章时发生异常：{ex.Message}");
                 throw ex;
             }
         }
