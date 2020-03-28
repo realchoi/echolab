@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using EchoBlog.Api.Applications.Commands;
+using EchoBlog.Api.Dtos;
 using EchoBlog.Api.Util.AutoMapper.CustomConverter;
-using EchoBlog.Entity;
-using EchoBlog.Model;
+using EchoBlog.Domains.ArticleAggregate;
+using System;
 
 namespace EchoBlog.Api.Util.AutoMapper.CustomProfile
 {
@@ -15,11 +17,16 @@ namespace EchoBlog.Api.Util.AutoMapper.CustomProfile
         /// </summary>
         public ArticleProfile()
         {
-            CreateMap<ArticleEntity, ArticleModel>()
-                .ForMember(destination => destination.ReadTimes, source => source.MapFrom(s => s.ReadTimes + 1))
-                .ForMember(destination => destination.CreateTime, source => source.MapFrom(s => s.CreateTime.ToString("yyyy-MM-dd")))
-                .ForMember(destination => destination.UpdateTime, source => source.ConvertUsing(new DateTimeConverter()));
-            CreateMap<ArticleModel, ArticleEntity>();
+            var zeroTime = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
+
+            CreateMap<Article, ArticleDto>()
+                .ForMember(destination => destination.CreateTime, source => source.MapFrom(s => zeroTime.AddSeconds(s.CreateTime).ToString("yyyy-MM-dd HH:mm:ss")))
+                .ForMember(destination => destination.LastTime, source => source.ConvertUsing(new DateTimeConverter()));    // 还可以使用配置文件的方式
+            CreateMap<ArticleDto, Article>()
+                .ForMember(des => des.CreateTime, src => src.MapFrom(s => DateTime.Parse(s.CreateTime)))
+                .ForMember(des => des.LastTime, src => src.MapFrom(s => DateTime.Parse(s.LastTime)));
+
+            CreateMap<ArticleCreateCommand, Article>();
         }
     }
 }

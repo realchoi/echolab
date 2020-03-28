@@ -1,20 +1,13 @@
 using AspectCore.Configuration;
 using AspectCore.Extensions.DependencyInjection;
 using EchoBlog.Api.Attribute;
-using EchoBlog.Api.Extension;
-using EchoBlog.Repository.DbConfig;
-using EchoBlog.Repository.Def;
-using EchoBlog.Repository.Impl;
-using EchoBlog.Service.Def;
-using EchoBlog.Service.Impl;
-using EchoBlog.Util.AppConfig;
+using EchoBlog.Api.Extensions;
+using EchoBlog.Infrastructures;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using NLog.Extensions.Logging;
 
 namespace EchoBlog.Api
 {
@@ -29,9 +22,6 @@ namespace EchoBlog.Api
         {
             Configuration = configuration;
             Env = env;
-
-            // 初始化数据库连接字符串
-            BaseDbConfig.ConnectionString = Configuration.GetConnectionString("DefaultConnectionString");
         }
 
         public IConfiguration Configuration { get; }
@@ -40,21 +30,18 @@ namespace EchoBlog.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            #region 注入用到的类
-
-            services.AddSingleton(new AppSetting(Env.ContentRootPath));
-            services.AddSingleton<IArticleRepository, ArticleRepository>();
-            services.AddSingleton<IArticleService, ArticleService>();
-
-            #endregion
-
+            // 添加数据库配置
+            services.AddMySqlDomainContext(Configuration.GetConnectionString("Default"));
             // 添加 Swagger 服务
-            services.AddSwaggerConfiguration();
+            services.AddSwaggerService();
             // 添加授权策略
-            services.AddJwtConfiguration();
+            services.AddJwtService(Configuration);
             // 添加 AutoMapper
-            services.AddAutoMapperConfiguration();
+            services.AddAutoMapperService(Configuration);
+            // 添加 MediatR
+            services.AddMediatRService();
+            // 添加业务类
+            services.AddCustomerService();
 
             services.AddControllers();
 
@@ -71,6 +58,13 @@ namespace EchoBlog.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+
+            // 确保数据库创建
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetService<DomainContext>();
+                context.Database.EnsureCreated();
             }
 
             // 启用 Swagger 中间件

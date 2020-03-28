@@ -4,6 +4,26 @@
         <name>EchoBlog.Api</name>
     </assembly>
     <members>
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.AuthorId">
+            <summary>
+            作者 Id
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.AuthorName">
+            <summary>
+            作者名称
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
         <member name="T:EchoBlog.Api.Attribute.LogAttribute">
             <summary>
             记录日志
@@ -20,38 +40,60 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:EchoBlog.Api.Extension.AutoMapperEx">
+        <member name="T:EchoBlog.Api.Dtos.ArticleDto">
             <summary>
-            AutoMapper 扩展类
+            文章传输对象
             </summary>
         </member>
-        <member name="M:EchoBlog.Api.Extension.AutoMapperEx.AddAutoMapperConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddSwaggerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            配置 AutoMapper
+            添加 Swagger 服务
             </summary>
             <param name="services"></param>
         </member>
-        <member name="T:EchoBlog.Api.Extension.JwtEx">
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddAutoMapperService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            JWT 认证以及授权扩展类
-            </summary>
-        </member>
-        <member name="M:EchoBlog.Api.Extension.JwtEx.AddJwtConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            配置 Jwt
+            添加 AutoMapper 服务
             </summary>
             <param name="services"></param>
+            <param name="configuration"></param>
         </member>
-        <member name="T:EchoBlog.Api.Extension.SwaggerEx">
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddJwtService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Swagger 扩展类
-            </summary>
-        </member>
-        <member name="M:EchoBlog.Api.Extension.SwaggerEx.AddSwaggerConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            配置 Swagger
+            添加 Jwt 认证授权服务
             </summary>
             <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddMediatRService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加 MediatR 服务
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddDomainContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder})">
+            <summary>
+            添加数据库连接配置
+            </summary>
+            <param name="services"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddMySqlDomainContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            添加 Mysql 数据库连接配置
+            </summary>
+            <param name="services"></param>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddCustomerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加业务服务
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
         </member>
         <member name="P:EchoBlog.Api.Startup.ApiName">
             <summary>

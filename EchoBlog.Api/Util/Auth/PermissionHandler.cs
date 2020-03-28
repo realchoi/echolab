@@ -1,8 +1,5 @@
-﻿using EchoBlog.Model.Auth;
+﻿using EchoBlog.Infrastructures.Core.Authorization;
 using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Util.Auth

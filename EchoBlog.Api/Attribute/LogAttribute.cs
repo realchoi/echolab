@@ -1,8 +1,7 @@
 ﻿using AspectCore.DynamicProxy;
-using EchoBlog.Util.LogUtil;
+using EchoBlog.Infrastructures.Core.Utils;
+using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Attribute
@@ -16,17 +15,17 @@ namespace EchoBlog.Api.Attribute
         {
             try
             {
-                NLogUtil.Info("方法执行之前。。。");
+                LogUtil.Info("方法执行之前。。。");
                 await next.Invoke(context);
             }
             catch (Exception ex)
             {
-                NLogUtil.Info("发生异常。。。");
+                LogUtil.Info("发生异常。。。");
                 throw ex;
             }
             finally
             {
-                NLogUtil.Info("方法执行之后。。。");
+                LogUtil.Info("方法执行之后。。。");
             }
         }
     }

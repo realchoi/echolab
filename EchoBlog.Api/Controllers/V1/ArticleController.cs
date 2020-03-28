@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EchoBlog.Api.Attribute;
-using EchoBlog.Model;
-using EchoBlog.Service.Def;
-using EchoBlog.Util.LogUtil;
+﻿using EchoBlog.Api.Applications.Commands;
+using EchoBlog.Api.Applications.Queries;
+using EchoBlog.Api.Dtos;
+using EchoBlog.Infrastructures.Core.Utils;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Controllers.V1
 {
@@ -16,11 +15,11 @@ namespace EchoBlog.Api.Controllers.V1
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        private readonly IArticleService articleService;
+        IMediator _mediator;
 
-        public ArticleController(IArticleService articleService)
+        public ArticleController(IMediator mediator)
         {
-            this.articleService = articleService;
+            _mediator = mediator;
         }
 
         // GET: api/Article
@@ -35,21 +34,19 @@ namespace EchoBlog.Api.Controllers.V1
 
         // 使用自定义授权策略
         // [Authorize(Policy = "RequirementPolicy")]
-        [HttpGet]
+        [HttpPost("list")]
         //[Log]
-        public async Task<IEnumerable<ArticleModel>> Get()
+        public async Task<IEnumerable<ArticleDto>> Get([FromBody] ArticleQuery articleQuery)
         {
-            try
-            {
-                var articles = await articleService.GetAllArticles();
-                throw new Exception("测试异常消息");
-                //return articles;
-            }
-            catch (Exception ex)
-            {
-                NLogUtil.Error(ex, $"获取全部文章时发生异常：{ex.Message}");
-                throw ex;
-            }
+            LogUtil.Info("Get 方法执行");
+            return await _mediator.Send(articleQuery);
+        }
+
+        [HttpPost("create")]
+        public async Task<ArticleDto> Create([FromBody] ArticleCreateCommand articleCreateCommand)
+        {
+            LogUtil.Info("文章创建");
+            return await _mediator.Send(articleCreateCommand, HttpContext.RequestAborted);
         }
 
         // GET: api/Article/5
