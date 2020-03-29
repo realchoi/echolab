@@ -40,23 +40,13 @@ namespace EchoBlog.Api.Extensions
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = $"{apiName} 接口文档（.net core 3.1 版本）",
-                    Description = $"{apiName} Http Api V1",
-                    Contact = new OpenApiContact { Name = "Eric Choi", Email = "meetcds@foxmail.com" },
-                    License = new OpenApiLicense { Name = "Choi's Page", Url = new Uri("https://realchoi.com") }
-                });
-                c.OrderActionsBy(o => o.RelativePath);
+                c.SwaggerDoc("v1", new OpenApiInfo { Version = "v1", Title = $"{apiName} 接口文档（.net core 3.1 版本）" });
 
                 #region 读取 xml 信息
-
                 // 配置注释的 xml 文件
-                // var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;
-                var basePath = AppContext.BaseDirectory;
-                var xmlPath = Path.Combine(basePath, "EchoBlog.Api.xml");
-                c.IncludeXmlComments(xmlPath, true);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
 
                 #endregion
 

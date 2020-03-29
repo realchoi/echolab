@@ -45,6 +45,11 @@
             文章传输对象
             </summary>
         </member>
+        <member name="T:EchoBlog.Api.Extensions.ServiceCollectionExtensions">
+            <summary>
+            ServiceCollection 扩展
+            </summary>
+        </member>
         <member name="M:EchoBlog.Api.Extensions.ServiceCollectionExtensions.AddSwaggerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             添加 Swagger 服务

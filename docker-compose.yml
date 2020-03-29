@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  echoblog.api:
+    image: echoblogapi
+    build:
+      context: .
+      dockerfile: EchoBlog.Api/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - echoblog.mysql
+    networks:
+      - apibridge
+
+  echoblog.mysql:
+    image: mysql
+    ports:
+      - "13306:3306"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=88888887
+    networks:
+      - apibridge
+
+networks:
+  apibridge:
+    driver: bridge
