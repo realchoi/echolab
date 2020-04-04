@@ -23,8 +23,8 @@ namespace EchoBlog.Api.Util.AutoMapper.CustomProfile
                 .ForMember(destination => destination.CreateTime, source => source.MapFrom(s => zeroTime.AddSeconds(s.CreateTime).ToString("yyyy-MM-dd HH:mm:ss")))
                 .ForMember(destination => destination.LastTime, source => source.ConvertUsing(new DateTimeConverter()));    // 还可以使用配置文件的方式
             CreateMap<ArticleDto, Article>()
-                .ForMember(des => des.CreateTime, src => src.MapFrom(s => DateTime.Parse(s.CreateTime)))
-                .ForMember(des => des.LastTime, src => src.MapFrom(s => DateTime.Parse(s.LastTime)));
+                .ForMember(des => des.CreateTime, src => src.MapFrom(s => new DateTimeOffset(DateTime.Parse(s.CreateTime)).ToUnixTimeSeconds()))
+                .ForMember(des => des.LastTime, src => src.MapFrom(s => new DateTimeOffset(DateTime.Parse(s.LastTime)).ToUnixTimeSeconds()));
 
             CreateMap<ArticleCreateCommand, Article>();
         }

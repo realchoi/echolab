@@ -16,12 +16,9 @@ namespace EchoBlog.Infrastructures.Repositories
         }
 
 
-        public async Task<List<Article>> GetByAuthorId(string authorId)
+        public Task<List<Article>> GetByAuthorId(string authorId)
         {
-            return await Task.Run(() =>
-            {
-                return DbContext.Articles.Where(p => p.AuthorId.Equals(authorId)).ToList();
-            });
+            return Task.FromResult(DbContext.Articles.Where(p => p.AuthorId.Equals(authorId)).ToList());
         }
     }
 }

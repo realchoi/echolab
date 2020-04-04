@@ -18,12 +18,12 @@ namespace EchoBlog.Domain.Abstractions
         /// <summary>
         /// 创建时间
         /// </summary>
-        int CreateTime { get; }
+        long CreateTime { get; }
 
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        int LastTime { get; }
+        long LastTime { get; }
     }
 
 

@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EchoBlog.Domain.Abstractions\EchoBlog.Domain.Abstractions.csproj" />
   </ItemGroup>
 

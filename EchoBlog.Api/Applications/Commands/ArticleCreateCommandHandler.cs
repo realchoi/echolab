@@ -26,6 +26,7 @@ namespace EchoBlog.Api.Applications.Commands
         public async Task<ArticleDto> Handle(ArticleCreateCommand request, CancellationToken cancellationToken)
         {
             var article = await _articleRepository.AddAsync(_mapper.Map<ArticleCreateCommand, Article>(request));
+            await _articleRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
             return _mapper.Map<Article, ArticleDto>(article);
         }
     }

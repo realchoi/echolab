@@ -9,9 +9,9 @@ namespace EchoBlog.Domain.Abstractions
     /// </summary>
     public abstract class Entity : IEntity
     {
-        public virtual int CreateTime { get; protected set; }
+        public virtual long CreateTime { get; protected set; } = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
-        public virtual int LastTime { get; protected set; }
+        public virtual long LastTime { get; protected set; } = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
         /// <summary>
         /// 获取实体的主键
@@ -27,6 +27,42 @@ namespace EchoBlog.Domain.Abstractions
         {
             return $"[Entity: {this.GetType().Name}], Keys = {string.Join(", ", this.GetKeys())}";
         }
+
+
+        #region 领域事件的处理
+
+        private List<IDomainEvent> _domainEvents;
+
+        public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
+
+        /// <summary>
+        /// 添加领域事件
+        /// </summary>
+        /// <param name="event"></param>
+        public void AddDomainEvent(IDomainEvent @event)
+        {
+            _domainEvents ??= new List<IDomainEvent>();
+            _domainEvents.Add(@event);
+        }
+
+        /// <summary>
+        /// 移除领域事件
+        /// </summary>
+        /// <param name="event"></param>
+        public void RemoveDomainEvent(IDomainEvent @event)
+        {
+            _domainEvents?.Remove(@event);
+        }
+
+        /// <summary>
+        /// 清空领域事件
+        /// </summary>
+        public void ClearDomainEvent()
+        {
+            _domainEvents?.Clear();
+        }
+
+        #endregion
     }
 
 

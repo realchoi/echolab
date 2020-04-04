@@ -1,4 +1,5 @@
 ﻿using EchoBlog.Domain.Abstractions;
+using EchoBlog.Domains.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,6 +34,19 @@ namespace EchoBlog.Domains.ArticleAggregate
         /// <summary>
         /// 阅读次数
         /// </summary>
-        public string ReadTimes { get; private set; }
+        public int ReadTimes { get; private set; }
+
+
+        public Article(string authorId, string authorName, string title, string content, int readTimes)
+        {
+            this.AuthorId = authorId;
+            this.AuthorName = authorName;
+            this.Title = title;
+            this.Content = content;
+            this.ReadTimes = readTimes;
+
+            // 添加文章创建领域事件
+            this.AddDomainEvent(new ArticleCreatedDomainEvent(this));
+        }
     }
 }

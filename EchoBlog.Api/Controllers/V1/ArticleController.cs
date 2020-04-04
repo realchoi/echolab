@@ -24,7 +24,7 @@ namespace EchoBlog.Api.Controllers.V1
 
         // GET: api/Article
         // 基于角色的授权：角色为 Admin 的用户才可以访问
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
 
         // 基于策略的授权：角色为 Admin 或者为 User 的用户都可以访问
         // [Authorize(Policy = "AdminOrUser")]
