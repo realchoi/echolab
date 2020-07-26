@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using EchoBlog.Api.Infrastructures.Auth;
 using EchoBlog.Api.Util.Auth;
 using EchoBlog.Domains.ArticleAggregate;
 using EchoBlog.Infrastructures;
 using EchoBlog.Infrastructures.Core.Authorization;
+using EchoBlog.Infrastructures.Core.Snowflake;
 using EchoBlog.Infrastructures.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -233,6 +235,11 @@ namespace EchoBlog.Api.Extensions
         /// <returns></returns>
         public static IServiceCollection AddCustomerService(this IServiceCollection services)
         {
+            services.AddSingleton(new SnowflakeId(0, 0));
+            services.AddScoped<JwtTokenGenerator>();
+            services.AddScoped<JwtToken>();
+            services.AddScoped<IUserProfileRepository, UserProfileRepository>();
+            services.AddScoped<ILocalAuthUserRepository, LocalAuthUserRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
             return services;
         }

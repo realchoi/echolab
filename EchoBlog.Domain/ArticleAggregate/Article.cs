@@ -9,7 +9,7 @@ namespace EchoBlog.Domains.ArticleAggregate
     /// <summary>
     /// 文章实体类，该实体类为聚合根
     /// </summary>
-    public class Article : Entity<int>, IAggregateRoot
+    public class Article : Entity<long>, IAggregateRoot
     {
         /// <summary>
         /// 作者 Id

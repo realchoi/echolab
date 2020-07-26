@@ -33,11 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EchoBlog.Core\EchoBlog.Core.csproj" />
     <ProjectReference Include="..\EchoBlog.Infrastructures\EchoBlog.Infrastructures.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructures\Auth\" />
   </ItemGroup>
 
   <ItemGroup>
