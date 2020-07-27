@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Domains.ArticleAggregate;
-using EchoBlog.Infrastructures.Repositories;
+using EchoBlog.Infrastructures.Repositories.Abstractions;
 using MediatR;
 using System;
 using System.Collections.Generic;

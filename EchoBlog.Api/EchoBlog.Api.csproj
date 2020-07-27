@@ -38,9 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Dockerfile">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="EchoBlog.Api.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

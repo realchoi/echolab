@@ -6,6 +6,7 @@ using EchoBlog.Infrastructures;
 using EchoBlog.Infrastructures.Core.Authorization;
 using EchoBlog.Infrastructures.Core.Snowflake;
 using EchoBlog.Infrastructures.Repositories;
+using EchoBlog.Infrastructures.Repositories.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Extensions
 {

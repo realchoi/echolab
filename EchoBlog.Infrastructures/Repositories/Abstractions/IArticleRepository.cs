@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EchoBlog.Infrastructures.Repositories
+namespace EchoBlog.Infrastructures.Repositories.Abstractions
 {
     public interface IArticleRepository : IRepository<Article, int>
     {
-        Task<List<Article>> GetByAuthorId(string authorId);
+        Task<List<Article>> GetByAuthorIdAsync(string authorId);
     }
 }

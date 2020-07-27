@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Domains.ArticleAggregate;
-using EchoBlog.Infrastructures.Repositories;
+using EchoBlog.Infrastructures.Repositories.Abstractions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace EchoBlog.Api.Applications.Queries
 
         public async Task<IEnumerable<ArticleDto>> Handle(ArticleQuery request, CancellationToken cancellationToken)
         {
-            var articles = await _articleRepository.GetByAuthorId(request.AuthorId);
+            var articles = await _articleRepository.GetByAuthorIdAsync(request.AuthorId);
             var articlesDto = _mapper.Map<IEnumerable<Article>, IEnumerable<ArticleDto>>(articles);
             return articlesDto;
         }

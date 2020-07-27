@@ -7,19 +7,15 @@ using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Applications.Commands
 {
-    public class LocalAuthUserCreateCommand : IRequest<LocalAuthUserDto>
+    public class LocalAuthUserLoginCommand : IRequest<LocalAuthUserDto>
     {
-        public LocalAuthUserCreateCommand() { }
+        public LocalAuthUserLoginCommand() { }
 
-        public LocalAuthUserCreateCommand(string userName, string password)
+        public LocalAuthUserLoginCommand(string userName, string password)
         {
             UserName = userName;
             Password = password;
         }
-
-        /*public long Id { get; set }*/
-
-        public long UserId { get; set; }
 
         public string UserName { get; set; }
 

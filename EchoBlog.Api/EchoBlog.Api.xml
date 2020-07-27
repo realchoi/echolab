@@ -47,14 +47,23 @@
             <param name="command"></param>
             <returns></returns>
         </member>
+        <member name="M:EchoBlog.Api.Controllers.V1.UserController.Login(EchoBlog.Api.Applications.Commands.LocalAuthUserLoginCommand)">
+            <summary>
+            用户注册
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoBlog.Api.Controllers.V1.UserController.GetUserProfile(EchoBlog.Api.Applications.Queries.UserProfileQuery)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
         <member name="T:EchoBlog.Api.Dtos.ArticleDto">
             <summary>
             文章传输对象
-            </summary>
-        </member>
-        <member name="T:EchoBlog.Api.Dtos.UserDto">
-            <summary>
-            用户数据传输类
             </summary>
         </member>
         <member name="T:EchoBlog.Api.Extensions.ServiceCollectionExtensions">
@@ -127,17 +136,17 @@
             AutoMapper 自定义时间的映射规则：从 DateTime 转为对应的字符串
             </summary>
         </member>
-        <member name="T:EchoBlog.Api.Util.AutoMapper.CustomProfile.ArticleProfile">
+        <member name="T:EchoBlog.Api.Util.AutoMapper.CustomProfile.ArticleMapProfile">
             <summary>
             文章的 AutoMapper 配置文件类
             </summary>
         </member>
-        <member name="M:EchoBlog.Api.Util.AutoMapper.CustomProfile.ArticleProfile.#ctor">
+        <member name="M:EchoBlog.Api.Util.AutoMapper.CustomProfile.ArticleMapProfile.#ctor">
             <summary>
             构造方法，创建映射关系
             </summary>
         </member>
-        <member name="M:EchoBlog.Api.Util.AutoMapper.CustomProfile.LocalAuthUserProfile.#ctor">
+        <member name="M:EchoBlog.Api.Util.AutoMapper.CustomProfile.UserMapProfile.#ctor">
             <summary>
             构造方法，创建映射关系
             </summary>

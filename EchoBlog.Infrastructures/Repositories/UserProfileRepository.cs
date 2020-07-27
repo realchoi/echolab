@@ -1,5 +1,6 @@
 ﻿using EchoBlog.Domains.UserAggregate;
 using EchoBlog.Infrastructures.Core;
+using EchoBlog.Infrastructures.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,6 @@ namespace EchoBlog.Infrastructures.Repositories
     {
         public UserProfileRepository(DomainContext dbContext) : base(dbContext)
         {
-        }
-
-        public Task<List<UserProfile>> GetUserProfile(string userId)
-        {
-            return Task.FromResult(DbContext.UserProfiles.Where(p => p.Equals(userId)).ToList());
         }
     }
 }

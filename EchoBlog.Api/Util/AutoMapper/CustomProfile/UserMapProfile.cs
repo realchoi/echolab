@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Util.AutoMapper.CustomProfile
 {
-    public class LocalAuthUserProfile : Profile
+    public class UserMapProfile : Profile
     {
         /// <summary>
         /// 构造方法，创建映射关系
         /// </summary>
-        public LocalAuthUserProfile()
+        public UserMapProfile()
         {
             CreateMap<LocalAuthUserCreateCommand, LocalAuthUser>();
-            CreateMap<LocalAuthUser, UserDto>();
+            CreateMap<LocalAuthUser, LocalAuthUserDto>();
+
+            CreateMap<UserProfile, UserProfileDto>();
+            CreateMap<UserProfileDto, UserProfile>();
         }
     }
 }
