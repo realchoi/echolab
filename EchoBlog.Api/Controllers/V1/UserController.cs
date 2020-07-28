@@ -68,10 +68,10 @@ namespace EchoBlog.Api.Controllers.V1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("login")]
-        public async Task<Result<string>> Login([FromBody] LocalAuthUserLoginCommand command)
+        public async Task<Result<LocalAuthUserDto>> Login([FromBody] LocalAuthUserLoginCommand command)
         {
             LogUtil.Info("用户创建");
-            var result = new Result<string>();
+            var result = new Result<LocalAuthUserDto>();
             try
             {
                 var localAuthUserDto = await _mediator.Send(command);
@@ -79,7 +79,9 @@ namespace EchoBlog.Api.Controllers.V1
                 if (localAuthUserDto != null)
                 {
                     var token = await _jwtToken.GetJwtToken();
-                    result.Data = token;
+                    localAuthUserDto.Token = token;
+                    localAuthUserDto.Password = ""; // 置空，防止传输过程中泄露到前台
+                    result.Data = localAuthUserDto;
                 }
                 else
                 {
