@@ -87,7 +87,9 @@ namespace EchoBlog.Infrastructures.Core
 
         public virtual async Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken = default)
         {
-            return await DbContext.FindAsync<TEntity>(id, cancellationToken);
+            // return await DbContext.FindAsync<TEntity>(id, cancellationToken);
+            // 上述使用方法报错，详情见：https://stackoverflow.com/questions/55758059/get-error-entity-type-course-is-defined-with-a-single-key-property-but-2-va
+            return await DbContext.FindAsync<TEntity>(new object[] { id }, cancellationToken);
         }
     }
 }

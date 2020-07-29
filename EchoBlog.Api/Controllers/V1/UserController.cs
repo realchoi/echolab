@@ -80,7 +80,6 @@ namespace EchoBlog.Api.Controllers.V1
                 {
                     var token = await _jwtToken.GetJwtToken();
                     localAuthUserDto.Token = token;
-                    localAuthUserDto.Password = ""; // 置空，防止传输过程中泄露到前台
                     result.Data = localAuthUserDto;
                 }
                 else

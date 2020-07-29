@@ -16,6 +16,21 @@ namespace EchoBlog.Domains.UserAggregate
         public string Name { get; private set; }
 
         /// <summary>
+        /// 用户头像（地址）
+        /// </summary>
+        public string Avatar { get; private set; }
+
+        /// <summary>
+        /// 用户介绍
+        /// </summary>
+        public string Introduction { get; private set; }
+
+        /// <summary>
+        /// 用户角色
+        /// </summary>
+        public string Roles { get; private set; }
+
+        /// <summary>
         /// 电子邮件地址
         /// </summary>
         public string Email { get; private set; }
@@ -32,16 +47,13 @@ namespace EchoBlog.Domains.UserAggregate
 
         public UserProfile() { }
 
-        /// <summary>
-        /// 建立一个 User 对象
-        /// </summary>
-        /// <param name="name">用户名</param>
-        /// <param name="email">电子邮件地址</param>
-        /// <param name="github">GitHub 地址</param>
-        /// <param name="website">个人网站地址</param>
-        public UserProfile(string name, string email, string github, string website)
+        public UserProfile(string name, string avatar, string introduction,
+            string roles, string email, string github, string website)
         {
             this.Name = name;
+            this.Avatar = avatar;
+            this.Introduction = introduction;
+            this.Roles = roles;
             this.Email = email;
             this.Github = github;
             this.Website = website;

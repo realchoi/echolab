@@ -10,6 +10,12 @@ namespace EchoBlog.Api.Dtos
     {
         public string Name { get; set; }
 
+        public string Avatar { get; private set; }
+
+        public string Introduction { get; private set; }
+
+        public string Roles { get; private set; }
+
         public string Email { get; private set; }
 
         public string Github { get; private set; }
