@@ -8,7 +8,7 @@ namespace EchoBlog.Api.Dtos
 {
     public class LocalAuthUserDto : BaseDto<long>
     {
-        public long UserId { get; set; }
+        public string UserId { get; set; }
 
         public string UserName { get; set; }
 

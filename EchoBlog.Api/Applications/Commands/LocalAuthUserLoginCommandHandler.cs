@@ -26,7 +26,7 @@ namespace EchoBlog.Api.Applications.Commands
         {
             // 根据用户名和口令进行查找用户
             var localAuthUser = await _localAuthUserRepository.AuthenticateAsync(request.UserName, request.Password);
-            return _mapper.Map<LocalAuthUser, LocalAuthUserDto>(localAuthUser);
+            return localAuthUser == null ? null : _mapper.Map<LocalAuthUser, LocalAuthUserDto>(localAuthUser);
         }
     }
 }

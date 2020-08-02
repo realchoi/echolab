@@ -9,13 +9,13 @@ namespace EchoBlog.Api.Applications.Queries
 {
     public class UserProfileQuery : IRequest<UserProfileDto>
     {
-        public long Id { get; /*private*/ set; }
+        public string Id { get; /*private*/ set; }
 
         public string Name { get; /*private*/ set; }
 
         public UserProfileQuery() { }
 
-        public UserProfileQuery(long id, string name)
+        public UserProfileQuery(string id, string name)
         {
             Id = id;
             Name = name;

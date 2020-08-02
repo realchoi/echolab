@@ -24,8 +24,12 @@ namespace EchoBlog.Api.Applications.Queries
 
         public async Task<UserProfileDto> Handle(UserProfileQuery request, CancellationToken cancellationToken)
         {
-            var userProfile = await _userProfileRepository.GetAsync(request.Id);
-            return _mapper.Map<UserProfile, UserProfileDto>(userProfile);
+            if (long.TryParse(request.Id, out var id))
+            {
+                var userProfile = await _userProfileRepository.GetAsync(id);
+                return _mapper.Map<UserProfile, UserProfileDto>(userProfile);
+            }
+            return null;
         }
     }
 }

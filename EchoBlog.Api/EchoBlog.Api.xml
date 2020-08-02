@@ -49,7 +49,7 @@
         </member>
         <member name="M:EchoBlog.Api.Controllers.V1.UserController.Login(EchoBlog.Api.Applications.Commands.LocalAuthUserLoginCommand)">
             <summary>
-            用户注册
+            用户登录
             </summary>
             <param name="command"></param>
             <returns></returns>

@@ -11,9 +11,12 @@ namespace EchoBlog.Core
     public class Result<T>
     {
         /// <summary>
-        /// 返回状态码（值域：0-正常；-1-异常；...；9999-其他）
+        /// 返回状态码（值域：200、400、401、403、404、500、999-其他）
+        /// <para>
+        /// 关于状态码的定义，参考：https://www.zhihu.com/question/58686782/answer/159603453
+        /// </para>
         /// </summary>
-        public int Code { get; set; } = 0;
+        public int Code { get; set; } = 200;
 
         /// <summary>
         /// 返回消息，可自定义

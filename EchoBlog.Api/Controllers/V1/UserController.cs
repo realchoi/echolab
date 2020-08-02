@@ -38,24 +38,15 @@ namespace EchoBlog.Api.Controllers.V1
         [HttpPost("register")]
         public async Task<Result<LocalAuthUserDto>> Register([FromBody] LocalAuthUserCreateCommand command)
         {
-            LogUtil.Info("用户创建");
             var result = new Result<LocalAuthUserDto>();
             try
             {
                 var localAuthUserDto = await _mediator.Send(command);
-                if (localAuthUserDto != null)
-                {
-                    result.Data = localAuthUserDto;
-                }
-                else
-                {
-                    result.Code = -1;
-                    result.Message = "注册失败";
-                }
+                result.Data = localAuthUserDto;
             }
             catch (Exception ex)
             {
-                result.Code = -1;
+                result.Code = 500;
                 result.Message = $"程序发生异常：{ex.Message}";
             }
             return result;
@@ -63,7 +54,7 @@ namespace EchoBlog.Api.Controllers.V1
 
 
         /// <summary>
-        /// 用户注册
+        /// 用户登录
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
@@ -90,7 +81,7 @@ namespace EchoBlog.Api.Controllers.V1
             }
             catch (Exception ex)
             {
-                result.Code = -1;
+                result.Code = 500;
                 result.Message = $"程序发生异常：{ex.Message}";
             }
             return result;
@@ -111,7 +102,8 @@ namespace EchoBlog.Api.Controllers.V1
             {
                 var userProfileDto = await _mediator.Send(query);
                 // 返回用户信息
-                if (userProfileDto != null)
+                result.Data = userProfileDto;
+                /*if (userProfileDto != null)
                 {
                     result.Data = userProfileDto;
                 }
@@ -119,11 +111,11 @@ namespace EchoBlog.Api.Controllers.V1
                 {
                     result.Code = 404;
                     result.Message = "未找到用户信息";
-                }
+                }*/
             }
             catch (Exception ex)
             {
-                result.Code = -1;
+                result.Code = 500;
                 result.Message = $"程序发生异常：{ex.Message}";
             }
             return result;
