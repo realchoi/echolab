@@ -241,6 +241,7 @@ namespace EchoBlog.Api.Extensions
             services.AddScoped<IUserProfileRepository, UserProfileRepository>();
             services.AddScoped<ILocalAuthUserRepository, LocalAuthUserRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<ITopicRepository, TopicRepository>();
             return services;
         }
     }

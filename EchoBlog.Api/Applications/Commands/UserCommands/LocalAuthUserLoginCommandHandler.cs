@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EchoBlog.Api.Applications.Commands
+namespace EchoBlog.Api.Applications.Commands.UserCommands
 {
     public class LocalAuthUserLoginCommandHandler : IRequestHandler<LocalAuthUserLoginCommand, LocalAuthUserDto>
     {

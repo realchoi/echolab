@@ -1,5 +1,5 @@
-﻿using EchoBlog.Api.Applications.Commands;
-using EchoBlog.Api.Applications.Queries;
+﻿using EchoBlog.Api.Applications.Commands.ArticleCommands;
+using EchoBlog.Api.Applications.Queries.ArticleQueries;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Infrastructures.Core.Utils;
 using MediatR;

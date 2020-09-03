@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EchoBlog.Api.Applications.Commands;
+using EchoBlog.Api.Applications.Commands.UserCommands;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Domains.UserAggregate;
 using System;

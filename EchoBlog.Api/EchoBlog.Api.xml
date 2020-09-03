@@ -4,24 +4,34 @@
         <name>EchoBlog.Api</name>
     </assembly>
     <members>
-        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.AuthorId">
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.AuthorId">
             <summary>
             作者 Id
             </summary>
         </member>
-        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.AuthorName">
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.AuthorName">
             <summary>
             作者名称
             </summary>
         </member>
-        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.Title">
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.Title">
             <summary>
             标题
             </summary>
         </member>
-        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCreateCommand.Content">
+        <member name="P:EchoBlog.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.Content">
             <summary>
             内容
+            </summary>
+        </member>
+        <member name="T:EchoBlog.Api.Applications.Queries.TopicQueries.TopicQuery">
+            <summary>
+            话题查询
+            </summary>
+        </member>
+        <member name="T:EchoBlog.Api.Applications.Queries.TopicQueries.TopicQueryHandler">
+            <summary>
+            话题查询集成事件处理类
             </summary>
         </member>
         <member name="T:EchoBlog.Api.Attribute.LogAttribute">
@@ -40,23 +50,33 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EchoBlog.Api.Controllers.V1.UserController.Register(EchoBlog.Api.Applications.Commands.LocalAuthUserCreateCommand)">
+        <member name="T:EchoBlog.Api.Controllers.V1.TopicController">
+            <summary>
+            话题接口
+            </summary>
+        </member>
+        <member name="T:EchoBlog.Api.Controllers.V1.UserController">
+            <summary>
+            用户接口
+            </summary>
+        </member>
+        <member name="M:EchoBlog.Api.Controllers.V1.UserController.Register(EchoBlog.Api.Applications.Commands.UserCommands.LocalAuthUserCreateCommand)">
             <summary>
             用户注册
             </summary>
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:EchoBlog.Api.Controllers.V1.UserController.Login(EchoBlog.Api.Applications.Commands.LocalAuthUserLoginCommand)">
+        <member name="M:EchoBlog.Api.Controllers.V1.UserController.Login(EchoBlog.Api.Applications.Commands.UserCommands.LocalAuthUserLoginCommand)">
             <summary>
             用户登录
             </summary>
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:EchoBlog.Api.Controllers.V1.UserController.GetUserProfile(EchoBlog.Api.Applications.Queries.UserProfileQuery)">
+        <member name="M:EchoBlog.Api.Controllers.V1.UserController.GetUserProfile(EchoBlog.Api.Applications.Queries.UserQueries.UserProfileQuery)">
             <summary>
-            获取用户信息
+            获取用户资料
             </summary>
             <param name="query"></param>
             <returns></returns>
@@ -64,6 +84,46 @@
         <member name="T:EchoBlog.Api.Dtos.ArticleDto">
             <summary>
             文章传输对象
+            </summary>
+        </member>
+        <member name="T:EchoBlog.Api.Dtos.TopicDto">
+            <summary>
+            话题数据传输类
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.AuthorId">
+            <summary>
+            作者 Id
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.AuthorName">
+            <summary>
+            作者名称
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.NodeId">
+            <summary>
+            节点 Id
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.NodeName">
+            <summary>
+            节点名称
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.ReadTimes">
+            <summary>
+            阅读次数
             </summary>
         </member>
         <member name="T:EchoBlog.Api.Extensions.ServiceCollectionExtensions">

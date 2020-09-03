@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EchoBlog.Api.Applications.Queries
+namespace EchoBlog.Api.Applications.Queries.UserQueries
 {
     public class UserProfileQueryHandler : IRequestHandler<UserProfileQuery, UserProfileDto>
     {

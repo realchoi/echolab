@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EchoBlog.Api.Applications.Commands;
-using EchoBlog.Api.Applications.Queries;
+using EchoBlog.Api.Applications.Commands.UserCommands;
+using EchoBlog.Api.Applications.Queries.UserQueries;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Api.Infrastructures.Auth;
 using EchoBlog.Core;
@@ -16,6 +16,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EchoBlog.Api.Controllers.V1
 {
+    /// <summary>
+    /// 用户接口
+    /// </summary>
     [Route("api/v1/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -89,7 +92,7 @@ namespace EchoBlog.Api.Controllers.V1
 
 
         /// <summary>
-        /// 获取用户信息
+        /// 获取用户资料
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>

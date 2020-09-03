@@ -8,7 +8,7 @@ namespace EchoBlog.Api.Dtos
 {
     public class UserProfileDto : BaseDto<long>
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         public string Avatar { get; private set; }
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EchoBlog.Api.Applications.Commands;
+using EchoBlog.Api.Applications.Commands.ArticleCommands;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Api.Util.AutoMapper.CustomConverter;
 using EchoBlog.Domains.ArticleAggregate;

@@ -25,10 +25,11 @@ namespace EchoBlog.Api
                     webBuilder.UseStartup<Startup>();
                 })
                 .UseServiceProviderFactory(new ServiceContextProviderFactory()) // Aspect.Core
-                .ConfigureLogging(logging =>
+                .ConfigureLogging(loggingBuilder =>
                 {
-                    logging.ClearProviders();
-                    logging.SetMinimumLevel(LogLevel.Trace);
+                    loggingBuilder.ClearProviders();
+                    loggingBuilder.SetMinimumLevel(LogLevel.Information);
+                    loggingBuilder.AddConsole();
                 })
                 .UseNLog(); // NLog »’÷æ
     }

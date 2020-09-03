@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EchoBlog.Api.Applications.Queries
+namespace EchoBlog.Api.Applications.Queries.UserQueries
 {
     public class UserProfileQuery : IRequest<UserProfileDto>
     {
