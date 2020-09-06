@@ -19,13 +19,18 @@ namespace EchoBlog.Api.Infrastructures.Auth
         }
 
 
-        public async Task<string> GetJwtToken()
+        /// <summary>
+        /// 获取 jwt token
+        /// </summary>
+        /// <param name="roles">生成当前 token 所对应的角色</param>
+        /// <returns></returns>
+        public async Task<string> GetJwtToken(params string[] roles)
         {
             var token = "";
             var privateKey = _configuration.GetSection("JwtSetting")["PrivateKey"];
             var expireTime = _configuration.GetSection("JwtSetting")["ExpireTime"];
-            if (double.TryParse(expireTime, out var seconds))
-                token = await _jwtTokenGenerator.GenerateToken(privateKey, seconds);
+            if (double.TryParse(expireTime, out var expireSeconds))
+                token = await _jwtTokenGenerator.GenerateToken(privateKey, expireSeconds, roles);
             return token;
         }
     }

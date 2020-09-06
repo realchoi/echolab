@@ -12,15 +12,15 @@ namespace EchoBlog.Api.Applications.Queries.TopicQueries
     /// </summary>
     public class TopicQuery : IRequest<IEnumerable<TopicDto>>
     {
-        public string CategoryId { get; /*private*/ set; }
+        public long CategoryId { get; /*private*/ set; }
 
-        public string NodeId { get; /*private*/ set; }
+        public long NodeId { get; /*private*/ set; }
 
-        public string AuthorId { get; /*private*/ set; }
+        public long AuthorId { get; /*private*/ set; }
 
         public TopicQuery() { }
 
-        public TopicQuery(string categoryId, string nodeId, string authorId)
+        public TopicQuery(long categoryId, long nodeId, long authorId)
         {
             CategoryId = categoryId;
             NodeId = nodeId;

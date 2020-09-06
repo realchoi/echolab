@@ -1,4 +1,5 @@
 ﻿using EchoBlog.Domains.ArticleAggregate;
+using EchoBlog.Domains.CategoryAggregate;
 using EchoBlog.Domains.TopicAggregate;
 using EchoBlog.Domains.UserAggregate;
 using EchoBlog.Infrastructures.Core;
@@ -35,6 +36,11 @@ namespace EchoBlog.Infrastructures
         /// </summary>
         public DbSet<Topic> Topics { get; set; }
 
+        /// <summary>
+        /// 话题分类
+        /// </summary>
+        public DbSet<Category> Categories { get; set; }
+
         public DbSet<Article> Articles { get; set; }
 
 
@@ -44,6 +50,7 @@ namespace EchoBlog.Infrastructures
             modelBuilder.ApplyConfiguration(new TopicEntityTypeConfiguration(this._snowflakeId));
             modelBuilder.ApplyConfiguration(new UserProfileEntityTypeConfiguration(this._snowflakeId));
             modelBuilder.ApplyConfiguration(new LocalAuthUserEntityTypeConfiguration(this._snowflakeId));
+            modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration(this._snowflakeId));
 
             base.OnModelCreating(modelBuilder);
         }

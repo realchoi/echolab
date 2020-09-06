@@ -1,8 +1,7 @@
-﻿using EchoBlog.Infrastructures.Core.Authorization;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 
-namespace EchoBlog.Api.Util.Auth
+namespace EchoBlog.Infrastructures.Core.Authorization
 {
     /// <summary>
     /// 自定义授权策略处理类

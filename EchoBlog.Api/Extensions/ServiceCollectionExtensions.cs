@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EchoBlog.Api.Infrastructures.Auth;
-using EchoBlog.Api.Util.Auth;
 using EchoBlog.Domains.ArticleAggregate;
 using EchoBlog.Infrastructures;
 using EchoBlog.Infrastructures.Core.Authorization;
@@ -160,6 +159,12 @@ namespace EchoBlog.Api.Extensions
                     p.RequireRole("Admin").RequireRole("User").Build();
                 });
 
+                // 授权策略：角色为 User 的用户都可以访问
+                o.AddPolicy("AdminOrUser", p =>
+                {
+                    p.RequireRole("User").Build();
+                });
+
                 #endregion
 
 
@@ -242,6 +247,7 @@ namespace EchoBlog.Api.Extensions
             services.AddScoped<ILocalAuthUserRepository, LocalAuthUserRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             return services;
         }
     }

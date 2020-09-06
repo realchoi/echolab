@@ -24,14 +24,14 @@
             内容
             </summary>
         </member>
+        <member name="T:EchoBlog.Api.Applications.Queries.TopicQueries.CategoryTopicQueryHandler">
+            <summary>
+            根据分类查询话题集成事件处理类
+            </summary>
+        </member>
         <member name="T:EchoBlog.Api.Applications.Queries.TopicQueries.TopicQuery">
             <summary>
             话题查询
-            </summary>
-        </member>
-        <member name="T:EchoBlog.Api.Applications.Queries.TopicQueries.TopicQueryHandler">
-            <summary>
-            话题查询集成事件处理类
             </summary>
         </member>
         <member name="T:EchoBlog.Api.Attribute.LogAttribute">
@@ -47,6 +47,12 @@
         <member name="M:EchoBlog.Api.Controllers.JwtController.Post">
             <summary>
             获取 Jwt Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EchoBlog.Api.Controllers.V1.CategoryController.GetList">
+            <summary>
+            获取话题分类列表
             </summary>
             <returns></returns>
         </member>
@@ -86,6 +92,26 @@
             文章传输对象
             </summary>
         </member>
+        <member name="T:EchoBlog.Api.Dtos.CategoryDto">
+            <summary>
+            话题分类数据传输类
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.CategoryDto.Code">
+            <summary>
+            代码
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.CategoryDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.CategoryDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
         <member name="T:EchoBlog.Api.Dtos.TopicDto">
             <summary>
             话题数据传输类
@@ -109,6 +135,16 @@
         <member name="P:EchoBlog.Api.Dtos.TopicDto.AuthorName">
             <summary>
             作者名称
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.CategoryId">
+            <summary>
+            分类 Id
+            </summary>
+        </member>
+        <member name="P:EchoBlog.Api.Dtos.TopicDto.CategoryName">
+            <summary>
+            分类名称
             </summary>
         </member>
         <member name="P:EchoBlog.Api.Dtos.TopicDto.NodeId">
@@ -181,14 +217,16 @@
             <param name="services"></param>
             <returns></returns>
         </member>
+        <member name="M:EchoBlog.Api.Infrastructures.Auth.JwtToken.GetJwtToken(System.String[])">
+            <summary>
+            获取 jwt token
+            </summary>
+            <param name="roles">生成当前 token 所对应的角色</param>
+            <returns></returns>
+        </member>
         <member name="P:EchoBlog.Api.Startup.ApiName">
             <summary>
             Api 名称
-            </summary>
-        </member>
-        <member name="T:EchoBlog.Api.Util.Auth.PermissionHandler">
-            <summary>
-            自定义授权策略处理类
             </summary>
         </member>
         <member name="T:EchoBlog.Api.Util.AutoMapper.CustomConverter.DateTimeConverter">

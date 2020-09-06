@@ -24,7 +24,7 @@ namespace EchoBlog.Api.Dtos
         /// <summary>
         /// 作者 Id
         /// </summary>
-        public string AuthorId { get; private set; }
+        public long AuthorId { get; private set; }
 
         /// <summary>
         /// 作者名称
@@ -32,9 +32,19 @@ namespace EchoBlog.Api.Dtos
         public string AuthorName { get; private set; }
 
         /// <summary>
+        /// 分类 Id
+        /// </summary>
+        public long CategoryId { get; private set; }
+
+        /// <summary>
+        /// 分类名称
+        /// </summary>
+        public string CategoryName { get; private set; }
+
+        /// <summary>
         /// 节点 Id
         /// </summary>
-        public string NodeId { get; private set; }
+        public long NodeId { get; private set; }
 
         /// <summary>
         /// 节点名称

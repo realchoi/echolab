@@ -12,7 +12,7 @@ namespace EchoBlog.Infrastructures.Repositories
 {
     public class TopicRepository : Repository<Topic, long, DomainContext>, ITopicRepository
     {
-        DomainContext _dbContext;
+        readonly DomainContext _dbContext;
 
         public TopicRepository(DomainContext dbContext) : base(dbContext)
         {
@@ -24,7 +24,7 @@ namespace EchoBlog.Infrastructures.Repositories
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        public async Task<List<Topic>> GetListByCategoryIdAsync(string categoryId)
+        public async Task<List<Topic>> GetListByCategoryIdAsync(long categoryId)
         {
             return await _dbContext.Topics.Where(p => p.CategoryId.Equals(categoryId)).ToListAsync();
         }
@@ -35,7 +35,7 @@ namespace EchoBlog.Infrastructures.Repositories
         /// </summary>
         /// <param name="nodeId"></param>
         /// <returns></returns>
-        public async Task<List<Topic>> GetListByNodeIdAsync(string nodeId)
+        public async Task<List<Topic>> GetListByNodeIdAsync(long nodeId)
         {
             return await _dbContext.Topics.Where(p => p.NodeId.Equals(nodeId)).ToListAsync();
         }
@@ -46,7 +46,7 @@ namespace EchoBlog.Infrastructures.Repositories
         /// </summary>
         /// <param name="authorId"></param>
         /// <returns></returns>
-        public async Task<List<Topic>> GetListByAuthorIdAsync(string authorId)
+        public async Task<List<Topic>> GetListByAuthorIdAsync(long authorId)
         {
             return await _dbContext.Topics.Where(p => p.AuthorId.Equals(authorId)).ToListAsync();
         }

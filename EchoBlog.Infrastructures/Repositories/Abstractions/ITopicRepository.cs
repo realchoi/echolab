@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace EchoBlog.Infrastructures.Repositories.Abstractions
 {
+    /// <summary>
+    /// 话题数据仓储接口
+    /// </summary>
     public interface ITopicRepository : IRepository<Topic, long>
     {
         /// <summary>
@@ -14,7 +17,7 @@ namespace EchoBlog.Infrastructures.Repositories.Abstractions
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        Task<List<Topic>> GetListByCategoryIdAsync(string categoryId);
+        Task<List<Topic>> GetListByCategoryIdAsync(long categoryId);
 
 
         /// <summary>
@@ -22,7 +25,7 @@ namespace EchoBlog.Infrastructures.Repositories.Abstractions
         /// </summary>
         /// <param name="nodeId"></param>
         /// <returns></returns>
-        Task<List<Topic>> GetListByNodeIdAsync(string nodeId);
+        Task<List<Topic>> GetListByNodeIdAsync(long nodeId);
 
 
         /// <summary>
@@ -30,6 +33,6 @@ namespace EchoBlog.Infrastructures.Repositories.Abstractions
         /// </summary>
         /// <param name="authorId"></param>
         /// <returns></returns>
-        Task<List<Topic>> GetListByAuthorIdAsync(string authorId);
+        Task<List<Topic>> GetListByAuthorIdAsync(long authorId);
     }
 }

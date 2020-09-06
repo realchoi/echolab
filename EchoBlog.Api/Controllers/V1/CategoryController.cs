@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EchoBlog.Api.Applications.Queries.TopicQueries;
+using EchoBlog.Api.Applications.Queries.CategoryQueries;
 using EchoBlog.Api.Dtos;
 using EchoBlog.Core;
 using EchoBlog.Infrastructures.Core.Utils;
@@ -13,32 +13,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EchoBlog.Api.Controllers.V1
 {
-    /// <summary>
-    /// 话题接口
-    /// </summary>
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class TopicController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         readonly IMediator _mediator;
 
-        public TopicController(IMediator mediator)
+        public CategoryController(IMediator mediator)
         {
             this._mediator = mediator;
         }
 
 
-        // 基于角色的授权：角色为 User 的用户才可以访问
+        /// <summary>
+        /// 获取话题分类列表
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Roles = "User")]
-        [HttpPost("getListByCategoryId")]
-        public async Task<Result<IEnumerable<TopicDto>>> GetListByCategoryId([FromBody] TopicQuery topicQuery)
+        [HttpPost("getList")]
+        public async Task<Result<IEnumerable<CategoryDto>>> GetList()
         {
-            LogUtil.Info("Get 方法执行");
-            var result = new Result<IEnumerable<TopicDto>>();
+            var result = new Result<IEnumerable<CategoryDto>>();
             try
             {
-                var topicDto = await _mediator.Send(topicQuery);
-                result.Data = topicDto;
+                var categoryDto = await _mediator.Send(new CategoryQuery());
+                result.Data = categoryDto;
             }
             catch (Exception ex)
             {

@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 namespace EchoBlog.Api.Applications.Queries.TopicQueries
 {
     /// <summary>
-    /// 话题查询集成事件处理类
+    /// 根据分类查询话题集成事件处理类
     /// </summary>
-    public class TopicQueryHandler : IRequestHandler<TopicQuery, IEnumerable<TopicDto>>
+    public class CategoryTopicQueryHandler : IRequestHandler<TopicQuery, IEnumerable<TopicDto>>
     {
-        ITopicRepository _topicRepository;
-        IMapper _mapper;
+        readonly ITopicRepository _topicRepository;
+        readonly IMapper _mapper;
 
-        public TopicQueryHandler(ITopicRepository topicRepository, IMapper mapper)
+        public CategoryTopicQueryHandler(ITopicRepository topicRepository, IMapper mapper)
         {
             this._topicRepository = topicRepository;
             this._mapper = mapper;
@@ -27,9 +27,9 @@ namespace EchoBlog.Api.Applications.Queries.TopicQueries
 
         public async Task<IEnumerable<TopicDto>> Handle(TopicQuery request, CancellationToken cancellationToken)
         {
-            var topics = await _topicRepository.GetListByCategoryIdAsync(request.CategoryId);
-            var topicsDto = _mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(topics);
-            return topicsDto;
+            var topicList = await _topicRepository.GetListByCategoryIdAsync(request.CategoryId);
+            var topicDtoList = _mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(topicList);
+            return topicDtoList;
         }
     }
 }

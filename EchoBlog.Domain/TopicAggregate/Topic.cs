@@ -23,7 +23,7 @@ namespace EchoBlog.Domains.TopicAggregate
         /// <summary>
         /// 作者 Id
         /// </summary>
-        public string AuthorId { get; private set; }
+        public long AuthorId { get; private set; }
 
         /// <summary>
         /// 作者名称
@@ -33,7 +33,7 @@ namespace EchoBlog.Domains.TopicAggregate
         /// <summary>
         /// 分类 Id
         /// </summary>
-        public string CategoryId { get; private set; }
+        public long CategoryId { get; private set; }
 
         /// <summary>
         /// 分类名称
@@ -43,7 +43,7 @@ namespace EchoBlog.Domains.TopicAggregate
         /// <summary>
         /// 节点 Id
         /// </summary>
-        public string NodeId { get; private set; }
+        public long NodeId { get; private set; }
 
         /// <summary>
         /// 节点名称
@@ -55,12 +55,17 @@ namespace EchoBlog.Domains.TopicAggregate
         /// </summary>
         public int ReadTimes { get; private set; }
 
-        public Topic(string title, string content, string authorId, string authorName, string nodeId, string nodeName, int readTimes)
+        public Topic(string title, string content,
+            long authorId, string authorName,
+            long categoryId, string categoryName,
+            long nodeId, string nodeName, int readTimes)
         {
             this.Title = title;
             this.Content = content;
             this.AuthorId = authorId;
             this.AuthorName = authorName;
+            this.CategoryId = categoryId;
+            this.CategoryName = categoryName;
             this.NodeId = nodeId;
             this.NodeName = nodeName;
             this.ReadTimes = readTimes;
