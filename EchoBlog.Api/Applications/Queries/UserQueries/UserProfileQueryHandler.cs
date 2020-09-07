@@ -24,9 +24,9 @@ namespace EchoBlog.Api.Applications.Queries.UserQueries
 
         public async Task<UserProfileDto> Handle(UserProfileQuery request, CancellationToken cancellationToken)
         {
-            if (long.TryParse(request.Id, out var id))
+            if (long.TryParse(request.AuthId, out var authId))
             {
-                var userProfile = await _userProfileRepository.GetAsync(id);
+                var userProfile = await _userProfileRepository.GetUserProfileByAuthId(request.AuthType.Value, authId);
                 return _mapper.Map<UserProfile, UserProfileDto>(userProfile);
             }
             return null;

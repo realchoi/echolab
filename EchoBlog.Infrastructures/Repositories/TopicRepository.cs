@@ -26,7 +26,7 @@ namespace EchoBlog.Infrastructures.Repositories
         /// <returns></returns>
         public async Task<List<Topic>> GetListByCategoryIdAsync(long categoryId)
         {
-            return await _dbContext.Topics.Where(p => p.CategoryId.Equals(categoryId)).ToListAsync();
+            return await _dbContext.Topics.Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
 
@@ -37,7 +37,7 @@ namespace EchoBlog.Infrastructures.Repositories
         /// <returns></returns>
         public async Task<List<Topic>> GetListByNodeIdAsync(long nodeId)
         {
-            return await _dbContext.Topics.Where(p => p.NodeId.Equals(nodeId)).ToListAsync();
+            return await _dbContext.Topics.Where(p => p.NodeId == nodeId).ToListAsync();
         }
 
 
@@ -48,7 +48,7 @@ namespace EchoBlog.Infrastructures.Repositories
         /// <returns></returns>
         public async Task<List<Topic>> GetListByAuthorIdAsync(long authorId)
         {
-            return await _dbContext.Topics.Where(p => p.AuthorId.Equals(authorId)).ToListAsync();
+            return await _dbContext.Topics.Where(p => p.AuthorId == authorId).ToListAsync();
         }
     }
 }

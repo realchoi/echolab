@@ -64,28 +64,36 @@ namespace EchoBlog.Api.Controllers.V1
         [HttpPost("login")]
         public async Task<Result<LocalAuthUserDto>> Login([FromBody] LocalAuthUserLoginCommand command)
         {
-            LogUtil.Info("用户创建");
             var result = new Result<LocalAuthUserDto>();
-            try
+
+            if (string.IsNullOrEmpty(command.UserName) || string.IsNullOrEmpty(command.Password))
             {
-                var localAuthUserDto = await _mediator.Send(command);
-                // 如果登录成功，返回一个新的 jwt token
-                if (localAuthUserDto != null)
-                {
-                    var token = await _jwtToken.GetJwtToken();
-                    localAuthUserDto.Token = token;
-                    result.Data = localAuthUserDto;
-                }
-                else
-                {
-                    result.Code = 404;
-                    result.Message = "用户名或密码不正确";
-                }
+                result.Code = 400;
+                result.Message = "参数 userName 和参数 password 不能为空";
             }
-            catch (Exception ex)
+            else
             {
-                result.Code = 500;
-                result.Message = $"程序发生异常：{ex.Message}";
+                try
+                {
+                    var localAuthUserDto = await _mediator.Send(command);
+                    // 如果登录成功，返回一个新的 jwt token
+                    if (localAuthUserDto != null)
+                    {
+                        var token = await _jwtToken.GetJwtToken();
+                        localAuthUserDto.Token = token;
+                        result.Data = localAuthUserDto;
+                    }
+                    else
+                    {
+                        result.Code = 404;
+                        result.Message = "用户名或密码不正确";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result.Code = 500;
+                    result.Message = $"程序发生异常：{ex.Message}";
+                }
             }
             return result;
         }
@@ -99,27 +107,35 @@ namespace EchoBlog.Api.Controllers.V1
         [HttpPost("getUserProfile")]
         public async Task<Result<UserProfileDto>> GetUserProfile([FromBody] UserProfileQuery query)
         {
-            LogUtil.Info("用户创建");
             var result = new Result<UserProfileDto>();
-            try
+
+            if (!query.AuthType.HasValue || string.IsNullOrEmpty(query.AuthId))
             {
-                var userProfileDto = await _mediator.Send(query);
-                // 返回用户信息
-                result.Data = userProfileDto;
-                /*if (userProfileDto != null)
-                {
-                    result.Data = userProfileDto;
-                }
-                else
-                {
-                    result.Code = 404;
-                    result.Message = "未找到用户信息";
-                }*/
+                result.Code = 400;
+                result.Message = "参数 authType 和参数 authId 不能为空";
             }
-            catch (Exception ex)
+            else
             {
-                result.Code = 500;
-                result.Message = $"程序发生异常：{ex.Message}";
+                try
+                {
+                    var userProfileDto = await _mediator.Send(query);
+                    // 返回用户信息
+                    result.Data = userProfileDto;
+                    /*if (userProfileDto != null)
+                    {
+                        result.Data = userProfileDto;
+                    }
+                    else
+                    {
+                        result.Code = 404;
+                        result.Message = "未找到用户信息";
+                    }*/
+                }
+                catch (Exception ex)
+                {
+                    result.Code = 500;
+                    result.Message = $"程序发生异常：{ex.Message}";
+                }
             }
             return result;
         }

@@ -11,6 +11,16 @@ namespace EchoBlog.Domains.UserAggregate
     public class UserProfile : Entity<long>, IAggregateRoot
     {
         /// <summary>
+        /// 用户 ID，关联认证表的主键（不同认证类型对应不同的认证表）
+        /// </summary>
+        public long AuthId { get; private set; }
+
+        /// <summary>
+        /// 用户认证类型（值域：1-用户名密码登录用户；2-第三方登录用户）
+        /// </summary>
+        public int AuthType { get; private set; }
+
+        /// <summary>
         /// 用户名
         /// </summary>
         public string Name { get; private set; }
@@ -47,9 +57,13 @@ namespace EchoBlog.Domains.UserAggregate
 
         public UserProfile() { }
 
-        public UserProfile(string name, string avatar, string introduction,
-            string roles, string email, string github, string website)
+        public UserProfile(long authId, int authType, string name,
+            string avatar = "", string introduction = "",
+            string roles = "", string email = "",
+            string github = "", string website = "")
         {
+            this.AuthId = authId;
+            this.AuthType = authType;
             this.Name = name;
             this.Avatar = avatar;
             this.Introduction = introduction;

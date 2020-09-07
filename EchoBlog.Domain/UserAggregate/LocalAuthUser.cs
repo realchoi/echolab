@@ -11,11 +11,6 @@ namespace EchoBlog.Domains.UserAggregate
     public class LocalAuthUser : Entity<long>, IAggregateRoot
     {
         /// <summary>
-        /// 用户 ID，关联 user 表的主键
-        /// </summary>
-        public long UserId { get; private set; }
-
-        /// <summary>
         /// 用户登录名
         /// </summary>
         public string UserName { get; private set; }
@@ -25,9 +20,9 @@ namespace EchoBlog.Domains.UserAggregate
         /// </summary>
         public string Password { get; private set; }
 
-        public LocalAuthUser(long userId, string userName, string password)
+
+        public LocalAuthUser(string userName, string password)
         {
-            this.UserId = userId;
             this.UserName = userName;
             this.Password = password;
         }
@@ -36,10 +31,10 @@ namespace EchoBlog.Domains.UserAggregate
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="id"></param>
         /// <param name="newPassword"></param>
         /// <returns></returns>
-        public bool ChangePassword(long userId, string newPassword)
+        public bool ChangePassword(long id, string newPassword)
         {
             // 修改密码后创建领域事件
             //this.AddDomainEvent(new UserPasswordChangedDomainEvent(this));

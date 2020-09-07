@@ -9,7 +9,7 @@ namespace EchoBlog.Api.Dtos
     /// <summary>
     /// 文章传输对象
     /// </summary>
-    public class ArticleDto : BaseDto<long>
+    public class ArticleDto : BaseDto<string>
     {
         public string AuthorId { get; set; }
 

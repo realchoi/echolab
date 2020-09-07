@@ -9,7 +9,7 @@ namespace EchoBlog.Api.Dtos
     /// <summary>
     /// 话题分类数据传输类
     /// </summary>
-    public class CategoryDto : BaseDto<long>
+    public class CategoryDto : BaseDto<string>
     {
         /// <summary>
         /// 代码

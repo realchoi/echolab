@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EchoBlog.Api.Dtos
 {
-    public class UserProfileDto : BaseDto<long>
+    public class UserProfileDto : BaseDto<string>
     {
         public string Name { get; private set; }
 

@@ -27,7 +27,7 @@ namespace EchoBlog.Api.Applications.Queries.TopicQueries
 
         public async Task<IEnumerable<TopicDto>> Handle(TopicQuery request, CancellationToken cancellationToken)
         {
-            var topicList = await _topicRepository.GetListByCategoryIdAsync(request.CategoryId);
+            var topicList = await _topicRepository.GetListByCategoryIdAsync(long.Parse(request.CategoryId));
             var topicDtoList = _mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(topicList);
             return topicDtoList;
         }
