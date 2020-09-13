@@ -66,6 +66,7 @@ namespace EchoLab.Infrastructures.Core
     /// 仓储接口
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
     public interface IRepository<TEntity, TKey> : IRepository<TEntity> where TEntity : Entity, IAggregateRoot
     {
         /// <summary>

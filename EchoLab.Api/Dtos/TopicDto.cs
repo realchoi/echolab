@@ -55,5 +55,20 @@ namespace EchoLab.Api.Dtos
         /// 阅读次数
         /// </summary>
         public int ReadTimes { get; private set; }
+
+        /// <summary>
+        /// 评论总数量
+        /// </summary>
+        public int CommentNumber { get; set; }
+
+        /// <summary>
+        /// 话题作者
+        /// </summary>
+        public UserProfileDto Author { get; set; }
+
+        /// <summary>
+        /// 话题作者
+        /// </summary>
+        public NodeDto Node { get; set; }
     }
 }

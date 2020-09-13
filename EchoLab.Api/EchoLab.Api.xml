@@ -112,10 +112,60 @@
             描述
             </summary>
         </member>
+        <member name="T:EchoLab.Api.Dtos.CommentDto">
+            <summary>
+            评论数据传输类
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CommentDto.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CommentDto.AuthorId">
+            <summary>
+            作者 ID
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CommentDto.AuthorName">
+            <summary>
+            作者名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CommentDto.TopicId">
+            <summary>
+            话题 ID
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CommentDto.TopicTitle">
+            <summary>
+            话题标题
+            </summary>
+        </member>
         <member name="T:EchoLab.Api.Dtos.LocalAuthUserDto">
             <summary>
             用户名密码登录用户数据传输类
             需要将 dto 的 id 统一设为 string 类型，原因是 long 类型传递到前端会丢失精度
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Dtos.NodeDto">
+            <summary>
+            节点数据传输类
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.NodeDto.Code">
+            <summary>
+            代码
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.NodeDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.NodeDto.Description">
+            <summary>
+            描述
             </summary>
         </member>
         <member name="T:EchoLab.Api.Dtos.TopicDto">
@@ -166,6 +216,21 @@
         <member name="P:EchoLab.Api.Dtos.TopicDto.ReadTimes">
             <summary>
             阅读次数
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.CommentNumber">
+            <summary>
+            评论总数量
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.Author">
+            <summary>
+            话题作者
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.Node">
+            <summary>
+            话题作者
             </summary>
         </member>
         <member name="T:EchoLab.Api.Extensions.ServiceCollectionExtensions">

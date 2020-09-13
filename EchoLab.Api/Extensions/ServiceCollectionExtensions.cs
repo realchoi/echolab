@@ -41,9 +41,10 @@ namespace EchoLab.Api.Extensions
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Version = "v1", Title = $"{apiName} 接口文档（.net core 3.1 版本）" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Version = "v1", Title = $"{apiName} 接口文档（.net core 3.1 版本）"});
 
                 #region 读取 xml 信息
+
                 // 配置注释的 xml 文件
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -92,6 +93,7 @@ namespace EchoLab.Api.Extensions
                 if (types.Any())
                     profiles.AddRange(types);
             }
+
             if (profiles.Any())
                 services.AddAutoMapper(profiles.ToArray());
         }
@@ -148,42 +150,28 @@ namespace EchoLab.Api.Extensions
                 #region 基于角色的授权策略
 
                 // 授权策略：角色为 Admin 或者为 User 的用户都可以访问
-                o.AddPolicy("AdminOrUser", p =>
-                {
-                    p.RequireRole("Admin", "User").Build();
-                });
+                o.AddPolicy("AdminOrUser", p => { p.RequireRole("Admin", "User").Build(); });
 
                 // 授权策略：角色为 Admin 且为 User 的用户才可以访问
-                o.AddPolicy("AdminAndUser", p =>
-                {
-                    p.RequireRole("Admin").RequireRole("User").Build();
-                });
+                o.AddPolicy("AdminAndUser", p => { p.RequireRole("Admin").RequireRole("User").Build(); });
 
                 // 授权策略：角色为 User 的用户都可以访问
-                o.AddPolicy("AdminOrUser", p =>
-                {
-                    p.RequireRole("User").Build();
-                });
+                o.AddPolicy("AdminOrUser", p => { p.RequireRole("User").Build(); });
 
                 #endregion
 
 
                 #region 基于声明的授权策略
 
-                o.AddPolicy("ClaimPolicy", p =>
-                {
-                    p.RequireClaim("Email", "admin@qq.com", "user@qq.com");
-                });
+                o.AddPolicy("ClaimPolicy", p => { p.RequireClaim("Email", "admin@qq.com", "user@qq.com"); });
 
                 #endregion
 
 
                 #region 基于自定义 Requirement 的授权策略
 
-                o.AddPolicy("RequirementPolicy", p =>
-                {
-                    p.Requirements.Add(new PermissionRequirement() { Role = "Admin" });
-                });
+                o.AddPolicy("RequirementPolicy",
+                    p => { p.Requirements.Add(new PermissionRequirement() {Role = "Admin"}); });
 
                 services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
 
@@ -212,7 +200,8 @@ namespace EchoLab.Api.Extensions
         /// <param name="services"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static IServiceCollection AddDomainContext(this IServiceCollection services, Action<DbContextOptionsBuilder> action)
+        public static IServiceCollection AddDomainContext(this IServiceCollection services,
+            Action<DbContextOptionsBuilder> action)
         {
             return services.AddDbContext<DomainContext>(action);
         }
@@ -224,12 +213,10 @@ namespace EchoLab.Api.Extensions
         /// <param name="services"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public static IServiceCollection AddMySqlDomainContext(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddMySqlDomainContext(this IServiceCollection services,
+            string connectionString)
         {
-            return services.AddDomainContext(builder =>
-            {
-                builder.UseMySql(connectionString);
-            });
+            return services.AddDomainContext(builder => { builder.UseMySql(connectionString); });
         }
 
 
@@ -248,6 +235,8 @@ namespace EchoLab.Api.Extensions
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<INodeRepository, NodeRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
             return services;
         }
     }

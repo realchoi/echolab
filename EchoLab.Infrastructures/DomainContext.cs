@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EchoLab.Domains.CommentAggregate;
+using EchoLab.Domains.NodeAggregate;
 
 namespace EchoLab.Infrastructures
 {
@@ -41,6 +43,16 @@ namespace EchoLab.Infrastructures
         /// </summary>
         public DbSet<Category> Categories { get; set; }
 
+        /// <summary>
+        /// 节点
+        /// </summary>
+        public DbSet<Node> Nodes { get; set; }
+
+        /// <summary>
+        /// 评论
+        /// </summary>
+        public DbSet<Comment> Comments { get; set; }
+
         public DbSet<Article> Articles { get; set; }
 
 
@@ -51,6 +63,8 @@ namespace EchoLab.Infrastructures
             modelBuilder.ApplyConfiguration(new UserProfileEntityTypeConfiguration(this._snowflakeId));
             modelBuilder.ApplyConfiguration(new LocalAuthUserEntityTypeConfiguration(this._snowflakeId));
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration(this._snowflakeId));
+            modelBuilder.ApplyConfiguration(new NodeEntityTypeConfiguration(this._snowflakeId));
+            modelBuilder.ApplyConfiguration(new CommentEntityTypeConfiguration(this._snowflakeId));
 
             base.OnModelCreating(modelBuilder);
         }
