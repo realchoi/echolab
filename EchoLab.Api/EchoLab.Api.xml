@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EchoLab.Api</name>
+    </assembly>
+    <members>
+        <member name="P:EchoLab.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.AuthorId">
+            <summary>
+            作者 Id
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.AuthorName">
+            <summary>
+            作者名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Applications.Commands.ArticleCommands.ArticleCreateCommand.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.CategoryTopicQueryHandler">
+            <summary>
+            根据分类查询话题集成事件处理类
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicQuery">
+            <summary>
+            话题查询
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Attribute.LogAttribute">
+            <summary>
+            记录日志
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Controllers.JwtController">
+            <summary>
+            Jwt 颁发控制器
+            </summary>
+        </member>
+        <member name="M:EchoLab.Api.Controllers.JwtController.Post">
+            <summary>
+            获取 Jwt Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Controllers.V1.CategoryController.GetList">
+            <summary>
+            获取话题分类列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EchoLab.Api.Controllers.V1.TopicController">
+            <summary>
+            话题接口
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Controllers.V1.UserController">
+            <summary>
+            用户接口
+            </summary>
+        </member>
+        <member name="M:EchoLab.Api.Controllers.V1.UserController.Register(EchoLab.Api.Applications.Commands.UserCommands.LocalAuthUserCreateCommand)">
+            <summary>
+            用户注册
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Controllers.V1.UserController.Login(EchoLab.Api.Applications.Commands.UserCommands.LocalAuthUserLoginCommand)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Controllers.V1.UserController.GetUserProfile(EchoLab.Api.Applications.Queries.UserQueries.UserProfileQuery)">
+            <summary>
+            获取用户资料
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EchoLab.Api.Dtos.ArticleDto">
+            <summary>
+            文章传输对象
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Dtos.CategoryDto">
+            <summary>
+            话题分类数据传输类
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CategoryDto.Code">
+            <summary>
+            代码
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CategoryDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.CategoryDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Dtos.LocalAuthUserDto">
+            <summary>
+            用户名密码登录用户数据传输类
+            需要将 dto 的 id 统一设为 string 类型，原因是 long 类型传递到前端会丢失精度
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Dtos.TopicDto">
+            <summary>
+            话题数据传输类
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.AuthorId">
+            <summary>
+            作者 Id
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.AuthorName">
+            <summary>
+            作者名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.CategoryId">
+            <summary>
+            分类 Id
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.CategoryName">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.NodeId">
+            <summary>
+            节点 Id
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.NodeName">
+            <summary>
+            节点名称
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.TopicDto.ReadTimes">
+            <summary>
+            阅读次数
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Extensions.ServiceCollectionExtensions">
+            <summary>
+            ServiceCollection 扩展
+            </summary>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddSwaggerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加 Swagger 服务
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddAutoMapperService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            添加 AutoMapper 服务
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddJwtService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            添加 Jwt 认证授权服务
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddMediatRService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加 MediatR 服务
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddDomainContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder})">
+            <summary>
+            添加数据库连接配置
+            </summary>
+            <param name="services"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddMySqlDomainContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            添加 Mysql 数据库连接配置
+            </summary>
+            <param name="services"></param>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Extensions.ServiceCollectionExtensions.AddCustomerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加业务服务
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EchoLab.Api.Infrastructures.Auth.JwtToken.GetJwtToken(System.String[])">
+            <summary>
+            获取 jwt token
+            </summary>
+            <param name="roles">生成当前 token 所对应的角色</param>
+            <returns></returns>
+        </member>
+        <member name="P:EchoLab.Api.Startup.ApiName">
+            <summary>
+            Api 名称
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Util.AutoMapper.CustomConverter.DateTimeConverter">
+            <summary>
+            AutoMapper 自定义时间的映射规则：从 DateTime 转为对应的字符串
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Util.AutoMapper.CustomProfile.ArticleMapProfile">
+            <summary>
+            文章的 AutoMapper 配置文件类
+            </summary>
+        </member>
+        <member name="M:EchoLab.Api.Util.AutoMapper.CustomProfile.ArticleMapProfile.#ctor">
+            <summary>
+            构造方法，创建映射关系
+            </summary>
+        </member>
+        <member name="M:EchoLab.Api.Util.AutoMapper.CustomProfile.UserMapProfile.#ctor">
+            <summary>
+            构造方法，创建映射关系
+            </summary>
+        </member>
+    </members>
+</doc>
