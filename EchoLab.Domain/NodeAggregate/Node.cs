@@ -21,5 +21,15 @@ namespace EchoLab.Domains.NodeAggregate
         /// 描述
         /// </summary>
         public string Description { get; private set; }
+        
+        /// <summary>
+        /// 分类 Id
+        /// </summary>
+        public long CategoryId { get; private set; }
+
+        /// <summary>
+        /// 分类名称
+        /// </summary>
+        public string CategoryName { get; private set; }
     }
 }
