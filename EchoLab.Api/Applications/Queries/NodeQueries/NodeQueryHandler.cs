@@ -17,7 +17,7 @@ namespace EchoLab.Api.Applications.Queries.NodeQueries
         public CategoryNodeQueryHandler(INodeRepository nodeRepository, IMapper mapper)
         {
             this._nodeRepository = nodeRepository;
-            this._mapper = _mapper;
+            this._mapper = mapper;
         }
 
         public async Task<IEnumerable<NodeDto>> Handle(NodeQuery request, CancellationToken cancellationToken)

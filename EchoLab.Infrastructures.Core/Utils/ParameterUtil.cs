@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq.Expressions;
+using System.Text;
 
 namespace EchoLab.Infrastructures.Core.Utils
 {
@@ -23,6 +25,13 @@ namespace EchoLab.Infrastructures.Core.Utils
             }
 
             return result.ToString();
+        }
+
+
+        public static Expression<Func<T, bool>> GetExpression<T>(T @object) where T : new()
+        {
+            Expression<Func<T, bool>> result = model => true;
+            return null;
         }
     }
 }

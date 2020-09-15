@@ -24,6 +24,16 @@
             内容
             </summary>
         </member>
+        <member name="T:EchoLab.Api.Applications.Queries.NodeQueries.NodeQuery">
+            <summary>
+            节点查询
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Applications.Queries.NodeQueries.NodeQuery.CategoryId">
+            <summary>
+            分类 ID
+            </summary>
+        </member>
         <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.CategoryTopicQueryHandler">
             <summary>
             根据分类查询话题集成事件处理类
@@ -55,6 +65,11 @@
             获取话题分类列表
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:EchoLab.Api.Controllers.V1.NodeController">
+            <summary>
+            节点接口
+            </summary>
         </member>
         <member name="T:EchoLab.Api.Controllers.V1.TopicController">
             <summary>
@@ -166,6 +181,16 @@
         <member name="P:EchoLab.Api.Dtos.NodeDto.Description">
             <summary>
             描述
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.NodeDto.CategoryId">
+            <summary>
+            分类 Id
+            </summary>
+        </member>
+        <member name="P:EchoLab.Api.Dtos.NodeDto.CategoryName">
+            <summary>
+            分类名称
             </summary>
         </member>
         <member name="T:EchoLab.Api.Dtos.TopicDto">

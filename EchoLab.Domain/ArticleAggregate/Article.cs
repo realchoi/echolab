@@ -20,6 +20,17 @@ namespace EchoLab.Domains.ArticleAggregate
         /// 作者名称
         /// </summary>
         public string AuthorName { get; private set; }
+        
+        /// <summary>
+        /// 节点 Id
+        /// </summary>
+        public string NodeId { get; private set; }
+
+        /// <summary>
+        /// 节点名称
+        /// 节点名称
+        /// </summary>
+        public string NodeName { get; private set; }
 
         /// <summary>
         /// 标题

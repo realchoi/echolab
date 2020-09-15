@@ -10,6 +10,7 @@ namespace EchoLab.Api.Applications.Queries.ArticleQueries
     public class ArticleQuery : IRequest<IEnumerable<ArticleDto>>
     {
         public string AuthorId { get; /*private*/ set; }
+        public string NodeId { get; /*private*/ set; }
 
         public ArticleQuery() { }
 
