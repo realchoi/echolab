@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -22,7 +24,9 @@ namespace EchoLab.Api.Applications.Queries.NodeQueries
 
         public async Task<IEnumerable<NodeDto>> Handle(NodeQuery request, CancellationToken cancellationToken)
         {
-            var nodeList = await _nodeRepository.GetNodesAsync(long.Parse(request.CategoryId));
+            Expression<Func<Node, bool>> expression = node =>
+                string.IsNullOrEmpty(request.CategoryId) || node.CategoryId == long.Parse(request.CategoryId);
+            var nodeList = await _nodeRepository.GetListAsync(expression, cancellationToken);
             var nodeDtoList = _mapper.Map<List<Node>, List<NodeDto>>(nodeList);
             return nodeDtoList;
         }

@@ -1,6 +1,7 @@
 ﻿using EchoLab.Domain.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -83,6 +84,22 @@ namespace EchoLab.Infrastructures.Core
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 根据不同的条件获取对象集合
+        /// </summary>
+        /// <param name="expression">查询条件</param>
+        /// <returns></returns>
+        List<TEntity> GetList(Expression<Func<TEntity, bool>> expression);
+
+        /// <summary>
+        /// 根据不同的条件获取对象集合（异步）
+        /// </summary>
+        /// <param name="expression">查询条件</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> expression,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 根据 Id 删除对象
