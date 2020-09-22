@@ -6,6 +6,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,12 +25,13 @@ namespace EchoLab.Api.Applications.Queries.UserQueries
 
         public async Task<UserProfileDto> Handle(UserProfileQuery request, CancellationToken cancellationToken)
         {
-            if (long.TryParse(request.AuthId, out var authId))
-            {
-                var userProfile = await _userProfileRepository.GetUserProfileByAuthId(request.AuthType.Value, authId);
-                return _mapper.Map<UserProfile, UserProfileDto>(userProfile);
-            }
-            return null;
+            if (!request.AuthType.HasValue || !long.TryParse(request.AuthId, out var authId))
+                return null;
+
+            Expression<Func<UserProfile, bool>> expression = profile =>
+                profile.AuthId == authId && profile.AuthType == request.AuthType.Value;
+            var userProfile = await _userProfileRepository.GetSingleAsync(expression, cancellationToken);
+            return _mapper.Map<UserProfile, UserProfileDto>(userProfile);
         }
     }
 }

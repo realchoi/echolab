@@ -86,6 +86,22 @@ namespace EchoLab.Infrastructures.Core
         Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// 根据不同的条件获取单个对象
+        /// </summary>
+        /// <param name="expression">查询条件</param>
+        /// <returns></returns>
+        TEntity GetSingle(Expression<Func<TEntity, bool>> expression);
+
+        /// <summary>
+        /// 根据不同的条件获取单个对象（异步）
+        /// </summary>
+        /// <param name="expression">查询条件</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> expression,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// 根据不同的条件获取对象集合
         /// </summary>
         /// <param name="expression">查询条件</param>

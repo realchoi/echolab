@@ -119,6 +119,28 @@ namespace EchoLab.Infrastructures.Core
         }
 
         /// <summary>
+        /// 根据不同的条件获取单个对象
+        /// </summary>
+        /// <param name="expression">查询条件</param>
+        /// <returns></returns>
+        public virtual TEntity GetSingle(Expression<Func<TEntity, bool>> expression)
+        {
+            return DbContext.Set<TEntity>().FirstOrDefault(expression);
+        }
+
+        /// <summary>
+        /// 根据不同的条件获取单个对象（异步）
+        /// </summary>
+        /// <param name="expression">查询条件</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public virtual async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> expression,
+            CancellationToken cancellationToken = default)
+        {
+            return await DbContext.Set<TEntity>().FirstOrDefaultAsync(expression, cancellationToken);
+        }
+
+        /// <summary>
         /// 根据不同的条件获取对象集合
         /// </summary>
         /// <param name="expression">查询条件</param>

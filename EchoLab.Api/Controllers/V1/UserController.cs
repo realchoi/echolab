@@ -52,6 +52,7 @@ namespace EchoLab.Api.Controllers.V1
                 result.Code = 500;
                 result.Message = $"程序发生异常：{ex.Message}";
             }
+
             return result;
         }
 
@@ -95,6 +96,7 @@ namespace EchoLab.Api.Controllers.V1
                     result.Message = $"程序发生异常：{ex.Message}";
                 }
             }
+
             return result;
         }
 
@@ -104,8 +106,8 @@ namespace EchoLab.Api.Controllers.V1
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        [HttpPost("getUserProfile")]
-        public async Task<Result<UserProfileDto>> GetUserProfile([FromBody] UserProfileQuery query)
+        [HttpGet("profile")]
+        public async Task<Result<UserProfileDto>> GetUserProfile([FromQuery] UserProfileQuery query)
         {
             var result = new Result<UserProfileDto>();
 
@@ -137,6 +139,7 @@ namespace EchoLab.Api.Controllers.V1
                     result.Message = $"程序发生异常：{ex.Message}";
                 }
             }
+
             return result;
         }
     }
