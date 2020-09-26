@@ -31,7 +31,7 @@ namespace EchoLab.Api.Controllers.V1
         // 基于角色的授权：角色为 User 的用户才可以访问
         [Authorize(Roles = "User")]
         [HttpGet("list")]
-        public async Task<Result<IEnumerable<TopicDto>>> GetListByCategoryId([FromQuery] TopicQuery query)
+        public async Task<Result<IEnumerable<TopicDto>>> GetTopics([FromQuery] TopicQuery query)
         {
             var result = new Result<IEnumerable<TopicDto>>();
             try

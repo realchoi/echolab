@@ -31,7 +31,7 @@ namespace EchoLab.Api.Controllers.V1
         /// <returns></returns>
         [Authorize(Roles = "User")]
         [HttpGet("list")]
-        public async Task<Result<IEnumerable<CategoryDto>>> GetList()
+        public async Task<Result<IEnumerable<CategoryDto>>> GetCategories()
         {
             var result = new Result<IEnumerable<CategoryDto>>();
             try
