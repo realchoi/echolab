@@ -30,7 +30,7 @@ namespace EchoLab.Api.Controllers.V1
         /// </summary>
         /// <returns></returns>
         [Authorize(Roles = "User")]
-        [HttpPost("getList")]
+        [HttpGet("list")]
         public async Task<Result<IEnumerable<CategoryDto>>> GetList()
         {
             var result = new Result<IEnumerable<CategoryDto>>();

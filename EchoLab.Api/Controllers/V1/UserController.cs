@@ -11,6 +11,7 @@ using EchoLab.Core;
 using EchoLab.Infrastructures.Core.Authorization;
 using EchoLab.Infrastructures.Core.Utils;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -106,6 +107,7 @@ namespace EchoLab.Api.Controllers.V1
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
+        [Authorize(Roles = "User")]
         [HttpGet("profile")]
         public async Task<Result<UserProfileDto>> GetUserProfile([FromQuery] UserProfileQuery query)
         {

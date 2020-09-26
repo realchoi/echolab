@@ -6,6 +6,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using EchoLab.Domains.NodeAggregate;
@@ -16,7 +17,7 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
     /// <summary>
     /// 根据分类查询话题集成事件处理类
     /// </summary>
-    public class CategoryTopicQueryHandler : IRequestHandler<TopicQuery, IEnumerable<TopicDto>>
+    public class TopicQueryHandler : IRequestHandler<TopicQuery, IEnumerable<TopicDto>>
     {
         readonly ITopicRepository _topicRepository;
         readonly IUserProfileRepository _userProfileRepository;
@@ -24,7 +25,7 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
         readonly ICommentRepository _commentRepository;
         readonly IMapper _mapper;
 
-        public CategoryTopicQueryHandler(ITopicRepository topicRepository,
+        public TopicQueryHandler(ITopicRepository topicRepository,
             IUserProfileRepository userProfileRepository,
             INodeRepository nodeRepository,
             ICommentRepository commentRepository,
@@ -37,9 +38,27 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
             this._mapper = mapper;
         }
 
+        /// <summary>
+        /// 根据不同条件查询话题集合数据
+        /// </summary>
+        /// <param name="request">查询条件，包括分类 id、节点 id、作者 id</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<TopicDto>> Handle(TopicQuery request, CancellationToken cancellationToken)
         {
-            var topicList = await _topicRepository.GetListByCategoryIdAsync(long.Parse(request.CategoryId));
+            // 分类查询条件是否可用
+            var categoryIdExpression = long.TryParse(request.CategoryId, out var categoryId);
+            // 节点查询条件是否可用
+            var nodeIdExpression = long.TryParse(request.CategoryId, out var nodeId);
+            // 作者查询条件是否可用
+            var authorIdExpression = long.TryParse(request.CategoryId, out var authorId);
+            // 拼接最后的查询条件
+            Expression<Func<Topic, bool>> expression = topic =>
+                (!categoryIdExpression || topic.CategoryId == categoryId) &&
+                (!nodeIdExpression || topic.NodeId == nodeId) &&
+                (!authorIdExpression || topic.AuthorId == authorId);
+
+            var topicList = await _topicRepository.GetListAsync(expression, cancellationToken);
             var topicDtoList = _mapper.Map<List<Topic>, List<TopicDto>>(topicList);
             if (topicDtoList == null || !topicDtoList.Any()) return topicDtoList;
             // 获取每个话题的作者信息、节点信息、评论数量

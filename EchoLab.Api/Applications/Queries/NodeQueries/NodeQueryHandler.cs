@@ -24,8 +24,11 @@ namespace EchoLab.Api.Applications.Queries.NodeQueries
 
         public async Task<IEnumerable<NodeDto>> Handle(NodeQuery request, CancellationToken cancellationToken)
         {
+            // 分类查询条件是否可用
+            var categoryIdExpression = long.TryParse(request.CategoryId, out var categoryId);
+
             Expression<Func<Node, bool>> expression = node =>
-                string.IsNullOrEmpty(request.CategoryId) || node.CategoryId == long.Parse(request.CategoryId);
+                !categoryIdExpression || node.CategoryId == categoryId;
             var nodeList = await _nodeRepository.GetListAsync(expression, cancellationToken);
             var nodeDtoList = _mapper.Map<List<Node>, List<NodeDto>>(nodeList);
             return nodeDtoList;

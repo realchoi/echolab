@@ -34,15 +34,23 @@
             分类 ID
             </summary>
         </member>
-        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.CategoryTopicQueryHandler">
-            <summary>
-            根据分类查询话题集成事件处理类
-            </summary>
-        </member>
         <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicQuery">
             <summary>
             话题查询
             </summary>
+        </member>
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicQueryHandler">
+            <summary>
+            根据分类查询话题集成事件处理类
+            </summary>
+        </member>
+        <member name="M:EchoLab.Api.Applications.Queries.TopicQueries.TopicQueryHandler.Handle(EchoLab.Api.Applications.Queries.TopicQueries.TopicQuery,System.Threading.CancellationToken)">
+            <summary>
+            根据不同条件查询话题集合数据
+            </summary>
+            <param name="request">查询条件，包括分类 id、节点 id、作者 id</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
         </member>
         <member name="T:EchoLab.Api.Attribute.LogAttribute">
             <summary>

@@ -24,32 +24,24 @@ namespace EchoLab.Api.Controllers.V1
         {
             this._mediator = mediator;
         }
-        
+
         // 基于角色的授权：角色为 User 的用户才可以访问
         [Authorize(Roles = "User")]
-        [HttpPost("getNodes")]
-        public async Task<Result<IEnumerable<NodeDto>>> GetNodes([FromBody] NodeQuery query)
+        [HttpGet("list")]
+        public async Task<Result<IEnumerable<NodeDto>>> GetNodes([FromQuery] NodeQuery query)
         {
             var result = new Result<IEnumerable<NodeDto>>();
+            try
+            {
+                var nodeDto = await _mediator.Send(query);
+                result.Data = nodeDto;
+            }
+            catch (Exception ex)
+            {
+                result.Code = 500;
+                result.Message = $"程序发生异常：{ex.Message}";
+            }
 
-            if (string.IsNullOrEmpty(query.CategoryId))
-            {
-                result.Code = 400;
-                result.Message = "参数 categoryId 不能为空";
-            }
-            else
-            {
-                try
-                {
-                    var nodeDto = await _mediator.Send(query);
-                    result.Data = nodeDto;
-                }
-                catch (Exception ex)
-                {
-                    result.Code = 500;
-                    result.Message = $"程序发生异常：{ex.Message}";
-                }
-            }
             return result;
         }
     }
