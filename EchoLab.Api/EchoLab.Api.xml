@@ -68,7 +68,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EchoLab.Api.Controllers.V1.CategoryController.GetList">
+        <member name="M:EchoLab.Api.Controllers.V1.CategoryController.GetCategories">
             <summary>
             获取话题分类列表
             </summary>

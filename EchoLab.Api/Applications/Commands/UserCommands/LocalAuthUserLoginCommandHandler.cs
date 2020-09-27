@@ -22,12 +22,14 @@ namespace EchoLab.Api.Applications.Commands.UserCommands
             _mapper = mapper;
         }
 
-        public async Task<LocalAuthUserDto> Handle(LocalAuthUserLoginCommand request, CancellationToken cancellationToken)
+        public async Task<LocalAuthUserDto> Handle(LocalAuthUserLoginCommand request,
+            CancellationToken cancellationToken)
         {
             // 根据用户名和口令进行查找用户
             var localAuthUser = await _localAuthUserRepository.AuthenticateAsync(request.UserName, request.Password);
             var localAuthUserDto = _mapper.Map<LocalAuthUser, LocalAuthUserDto>(localAuthUser);
-            localAuthUserDto.AuthType = 1;
+            if (localAuthUser != null)
+                localAuthUserDto.AuthType = 1;
             return localAuthUserDto;
         }
     }
