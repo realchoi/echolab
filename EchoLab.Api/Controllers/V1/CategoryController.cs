@@ -29,7 +29,7 @@ namespace EchoLab.Api.Controllers.V1
         /// 获取话题分类列表
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         [HttpGet("list")]
         public async Task<Result<IEnumerable<CategoryDto>>> GetCategories()
         {

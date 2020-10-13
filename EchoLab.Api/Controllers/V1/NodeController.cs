@@ -26,7 +26,7 @@ namespace EchoLab.Api.Controllers.V1
         }
 
         // 基于角色的授权：角色为 User 的用户才可以访问
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         [HttpGet("list")]
         public async Task<Result<IEnumerable<NodeDto>>> GetNodes([FromQuery] NodeQuery query)
         {
