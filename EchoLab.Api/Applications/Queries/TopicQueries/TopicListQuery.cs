@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace EchoLab.Api.Applications.Queries.TopicQueries
 {
     /// <summary>
-    /// 话题查询
+    /// 话题集合查询
     /// </summary>
-    public class TopicQuery : IRequest<IEnumerable<TopicDto>>
+    public class TopicListQuery : IRequest<IEnumerable<TopicDto>>
     {
         public string CategoryId { get; /*private*/ set; }
 
@@ -18,9 +18,9 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
 
         public string AuthorId { get; /*private*/ set; }
 
-        public TopicQuery() { }
+        public TopicListQuery() { }
 
-        public TopicQuery(string categoryId, string nodeId, string authorId)
+        public TopicListQuery(string categoryId, string nodeId, string authorId)
         {
             CategoryId = categoryId;
             NodeId = nodeId;

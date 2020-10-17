@@ -14,28 +14,7 @@ namespace EchoLab.Infrastructures.Repositories
 
         public CommentRepository(DomainContext dbContext) : base(dbContext)
         {
-            this._dbContext = dbContext;
-        }
-
-        /// <summary>
-        /// 根据话题 ID 获取评论集合
-        /// </summary>
-        /// <param name="topicId"></param>
-        /// <returns></returns>
-        public async Task<List<Comment>> GetListByTopicId(long topicId)
-        {
-            return await _dbContext.Comments.Where(p => p.TopicId == topicId).ToListAsync();
-        }
-
-
-        /// <summary>
-        /// 根据作者 ID 获取评论集合
-        /// </summary>
-        /// <param name="authorId"></param>
-        /// <returns></returns>
-        public async Task<List<Comment>> GetListByAuthorId(long authorId)
-        {
-            return await _dbContext.Comments.Where(p => p.AuthorId == authorId).ToListAsync();
+            _dbContext = dbContext;
         }
     }
 }

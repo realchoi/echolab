@@ -11,13 +11,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using EchoLab.Domains.NodeAggregate;
 using EchoLab.Domains.UserAggregate;
+using EchoLab.Domains.CommentAggregate;
 
 namespace EchoLab.Api.Applications.Queries.TopicQueries
 {
     /// <summary>
-    /// 根据分类查询话题集成事件处理类
+    /// 根据分类查询话题集合集成事件处理类
     /// </summary>
-    public class TopicQueryHandler : IRequestHandler<TopicQuery, IEnumerable<TopicDto>>
+    public class TopicListQueryHandler : IRequestHandler<TopicListQuery, IEnumerable<TopicDto>>
     {
         readonly ITopicRepository _topicRepository;
         readonly IUserProfileRepository _userProfileRepository;
@@ -25,7 +26,7 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
         readonly ICommentRepository _commentRepository;
         readonly IMapper _mapper;
 
-        public TopicQueryHandler(ITopicRepository topicRepository,
+        public TopicListQueryHandler(ITopicRepository topicRepository,
             IUserProfileRepository userProfileRepository,
             INodeRepository nodeRepository,
             ICommentRepository commentRepository,
@@ -44,7 +45,7 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
         /// <param name="request">查询条件，包括分类 id、节点 id、作者 id</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<TopicDto>> Handle(TopicQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TopicDto>> Handle(TopicListQuery request, CancellationToken cancellationToken)
         {
             // 分类查询条件是否可用
             var categoryIdExpression = long.TryParse(request.CategoryId, out var categoryId);
@@ -71,7 +72,9 @@ namespace EchoLab.Api.Applications.Queries.TopicQueries
                 var node = await _nodeRepository.GetAsync(topicDto.NodeId, cancellationToken);
                 topicDto.Node = _mapper.Map<Node, NodeDto>(node);
                 // 评论
-                var comments = await _commentRepository.GetListByTopicId(long.Parse(topicDto.Id));
+                //var comments = await _commentRepository.GetListByTopicId(long.Parse(topicDto.Id));
+                Expression<Func<Comment, bool>> comentExpression = comment => comment.TopicId == long.Parse(topicDto.Id);
+                var comments = await _commentRepository.GetListAsync(comentExpression);
                 topicDto.CommentNumber = comments?.Count ?? 0;
             }
 

@@ -34,23 +34,33 @@
             分类 ID
             </summary>
         </member>
-        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicQuery">
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicListQuery">
             <summary>
-            话题查询
+            话题集合查询
             </summary>
         </member>
-        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicQueryHandler">
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicListQueryHandler">
             <summary>
-            根据分类查询话题集成事件处理类
+            根据分类查询话题集合集成事件处理类
             </summary>
         </member>
-        <member name="M:EchoLab.Api.Applications.Queries.TopicQueries.TopicQueryHandler.Handle(EchoLab.Api.Applications.Queries.TopicQueries.TopicQuery,System.Threading.CancellationToken)">
+        <member name="M:EchoLab.Api.Applications.Queries.TopicQueries.TopicListQueryHandler.Handle(EchoLab.Api.Applications.Queries.TopicQueries.TopicListQuery,System.Threading.CancellationToken)">
             <summary>
             根据不同条件查询话题集合数据
             </summary>
             <param name="request">查询条件，包括分类 id、节点 id、作者 id</param>
             <param name="cancellationToken"></param>
             <returns></returns>
+        </member>
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicSingleQuery">
+            <summary>
+            单个话题查询
+            </summary>
+        </member>
+        <member name="T:EchoLab.Api.Applications.Queries.TopicQueries.TopicSingleQueryHandler">
+            <summary>
+            根据分类查询单个话题集成事件处理类
+            </summary>
         </member>
         <member name="T:EchoLab.Api.Attribute.LogAttribute">
             <summary>
@@ -83,6 +93,13 @@
             <summary>
             话题接口
             </summary>
+        </member>
+        <member name="M:EchoLab.Api.Controllers.V1.TopicController.GetTopicById(EchoLab.Api.Applications.Queries.TopicQueries.TopicSingleQuery)">
+            <summary>
+            根据 id 获取话题详情
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
         </member>
         <member name="T:EchoLab.Api.Controllers.V1.UserController">
             <summary>
